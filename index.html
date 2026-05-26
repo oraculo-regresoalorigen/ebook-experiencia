@@ -47,29 +47,38 @@
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <span class="serif text-sm md:text-xl gold-text font-bold tracking-[0.2em] uppercase">Regreso al Origen</span>
         
-        <div class="flex gap-1.5 md:gap-2 items-center">
-            <a href="https://oraculo-regresoalorigen.github.io/tirada-virtual/" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="text-[9px] md:text-xs bg-indigo-600 text-white px-2.5 md:px-5 py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20">
-               Oráculo
-            </a>
+        <div class="flex gap-1 md:gap-2 items-center">
+    
+    <a href="https://oraculo-regresoalorigen.github.io/tirada-virtual/" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       title="Oráculo Virtual"
+       class="text-[10px] md:text-xs bg-indigo-600 text-white p-2.5 md:px-5 md:py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center gap-1">
+       <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+       <span class="hidden md:inline">Oráculo</span>
+    </a>
 
-            <button onclick="descargarDesdeDrive('ebook_impresion')" 
-               class="text-[9px] md:text-xs border-2 border-slate-700 bg-slate-900/50 text-slate-300 px-2.5 md:px-5 py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-slate-800 hover:border-slate-500 transition-all">
-               Impresión
-            </button>
+    <button onclick="descargarDesdeDrive('ebook_impresion')" 
+       title="Descargar Edición Impresa"
+       class="text-[10px] md:text-xs border border-slate-700 bg-slate-900/50 text-slate-300 p-2.5 md:px-5 md:py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-slate-800 hover:border-slate-500 transition-all flex items-center gap-1">
+       <i data-lucide="printer" class="w-3.5 h-3.5 text-amber-500/80"></i>
+       <span class="hidden md:inline">Impresión</span>
+    </button>
 
-            <button onclick="descargarDesdeDrive('audio')" 
-               class="text-[9px] md:text-xs bg-[#D4AF37] text-white px-2.5 md:px-5 py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all shadow-lg shadow-[#D4AF37]/20">
-               Audiolibro
-            </button>
+    <button onclick="descargarDesdeDrive('audio')" 
+       title="Descargar Audiolibro"
+       class="text-[10px] md:text-xs bg-[#D4AF37] text-white p-2.5 md:px-5 md:py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all shadow-lg shadow-[#D4AF37]/20 flex items-center gap-1">
+       <i data-lucide="headphones" class="w-3.5 h-3.5"></i>
+       <span class="hidden md:inline">Audiolibro</span>
+    </button>
 
-            <button onclick="descargarDesdeDrive('guia')" 
-               class="text-[9px] md:text-xs border-2 border-[#D4AF37] text-[#D4AF37] px-2.5 md:px-5 py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 transition-all">
-               Frecuencias
-            </button>
-        </div>
+    <button onclick="descargarDesdeDrive('guia')" 
+       title="Descargar Frecuencias"
+       class="text-[10px] md:text-xs border border-[#D4AF37] text-[#D4AF37] p-2.5 md:px-5 md:py-2.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 transition-all flex items-center gap-1">
+       <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+       <span class="hidden md:inline">Frecuencias</span>
+    </button>
+</div>
     </div>
 </nav>
 <div class="h-20"></div>
