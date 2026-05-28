@@ -7,83 +7,98 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; scroll-behavior: smooth; }
+        body {
+            background-color: #050517;
+            color: #f5f0e8;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(11, 11, 46, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(26, 26, 62, 1) 0%, transparent 50%);
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+
+        .glass-panel {
+            background: rgba(26, 26, 62, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #d4af37, #f5f0e8, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .resource-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .resource-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+            background: rgba(26, 26, 62, 0.6);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050517; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        
         .serif { font-family: 'Playfair Display', serif; }
         .handwriting { font-family: 'Dancing Script', cursive; color: #D4AF37; }
         .gold-text { color: #D4AF37; }
         .portal-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.15); transition: all 0.5s ease; }
-        .gradient-bg { background: radial-gradient(circle at center, #0f172a 0%, #020617 100%); }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.3); }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); border-radius: 99px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.4); }
-        .gold-border-focus:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 10px rgba(212, 175, 55, 0.15); }
-        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .full-text-content p { margin-bottom: 2rem; line-height: 2; font-size: 1.125rem; color: #cbd5e1; text-align: justify; }
-        .full-text-content h3 { font-family: 'Playfair Display', serif; font-size: 1.875rem; color: #D4AF37; margin-top: 3.5rem; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+        .gradient-bg { background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%); }
+        .dropcap::first-letter { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: bold; color: #D4AF37; float: left; margin-right: 0.5rem; line-height: 1; }
+        
+        .reflection-area {
+            background: rgba(2, 6, 23, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #e2e8f0;
+            width: 100%;
+            min-height: 180px;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            resize: vertical;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        .reflection-area:focus { border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+        .save-status { font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem; text-align: right; min-height: 1.2em; }
+        
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .full-text-content { line-height: 1.8; color: #cbd5e1; }
+        .full-text-content p { margin-bottom: 1.5rem; }
+        .full-text-content strong { color: #f8fafc; font-weight: 600; }
     </style>
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="overflow-x-hidden">
 
-<!-- Navegación Fija Avanzada: 2 Niveles en Móvil, 1 Nivel en Escritorio -->
-<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-0 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-        <!-- Título del Libro (Centrado en móvil, a la izquierda en escritorio) -->
-        <span class="serif text-base md:text-xl gold-text font-bold tracking-[0.2em] uppercase text-center w-full md:w-auto">
-            Regreso al Origen
-        </span>
-        
-        <!-- Grupo de Botones: Cuadrícula de 2x2 en móvil, Línea continua en escritorio -->
-        <div class="grid grid-cols-2 md:flex gap-2 w-full md:w-auto">
-            <!-- Botón 1: Oráculo -->
-            <a href="https://oraculo-regresoalorigen.github.io/tirada-virtual/" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="text-[10px] md:text-xs bg-indigo-600 text-white px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-1.5 w-full">
-               <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-               <span>Oráculo</span>
-            </a>
-
-            <!-- Botón 2: Edición Impresa -->
-            <button onclick="descargarDesdeDrive('ebook_impresion')" 
-               class="text-[10px] md:text-xs border border-slate-700 bg-slate-900/50 text-slate-300 px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-slate-800 hover:border-slate-500 transition-all flex items-center justify-center gap-1.5 w-full">
-               <i data-lucide="printer" class="w-3.5 h-3.5 text-amber-500/80"></i>
-               <span>Impresión</span>
-            </button>
-
-            <!-- Botón 3: Audiolibro -->
-            <button onclick="descargarDesdeDrive('audio')" 
-               class="text-[10px] md:text-xs bg-[#D4AF37] text-white px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all shadow-lg shadow-[#D4AF37]/20 flex items-center justify-center gap-1.5 w-full">
-               <i data-lucide="headphones" class="w-3.5 h-3.5"></i>
-               <span>Audio</span>
-            </button>
-
-            <!-- Botón 4: Frecuencias Binaurales -->
-            <button onclick="descargarDesdeDrive('guia')" 
-               class="text-[10px] md:text-xs border border-[#D4AF37] text-[#D4AF37] px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 transition-all flex items-center justify-center gap-1.5 w-full">
-               <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-               <span>Sonidos</span>
-            </button>
-        </div>
-    </div>
-</nav>
-<div class="h-36 md:h-20"></div>
-<!-- Portal de Autenticación Místico (Firebase Gate) -->
 <div id="auth-portal" class="min-h-screen flex flex-col items-center justify-center relative px-4 py-12 gradient-bg text-center">
     <div class="max-w-md w-full p-8 md:p-10 rounded-[2.5rem] border border-[#D4AF37]/20 bg-slate-950/85 backdrop-blur-lg shadow-2xl relative z-10 my-auto">
         <h2 class="serif italic text-lg md:text-xl gold-text mb-2 tracking-widest uppercase">Portal Sagrado</h2>
         <h1 class="serif text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">Regreso al Origen</h1>
         <p class="text-sm text-slate-400 mb-8 italic">"Para ingresar a esta dimensión de lectura, por favor inicia sesión o activa tu acceso de comprador."</p>
         
-        <!-- Pestañas para elegir Login o Registro -->
         <div class="flex border-b border-slate-800 mb-6 text-sm">
             <button id="tab-login" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all uppercase tracking-widest text-[11px]">Iniciar Sesión</button>
             <button id="tab-register" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold uppercase tracking-widest text-[11px]">Activar Acceso VIP</button>
         </div>
 
-        <!-- Formulario de Iniciar Sesión -->
         <form id="form-login" onsubmit="handleAuthSubmit(event, 'login')" class="space-y-4">
             <div class="text-left">
                 <label class="block text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-2">Correo Electrónico</label>
@@ -97,7 +112,6 @@
             <button type="submit" class="w-full bg-indigo-600 text-white font-bold tracking-widest uppercase text-xs py-4 rounded-xl hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20">Ingresar</button>
         </form>
 
-        <!-- Formulario de Activación/Registro -->
         <form id="form-register" onsubmit="handleAuthSubmit(event, 'register')" class="space-y-4 hidden">
             <div class="text-left">
                 <label class="block text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-2">Correo Electrónico</label>
@@ -121,529 +135,1207 @@
 </div>
 
 <div id="main-content" class="hidden">
-
-    <!-- Hero -->
-    <section class="min-h-[auto] md:min-h-screen flex items-center justify-center relative pt-40 pb-12 md:pt-20 px-6 gradient-bg text-center">
-        <div class="max-w-4xl relative z-10 fade-in">
-            <h2 class="serif italic text-xl md:text-3xl gold-text mb-6 tracking-widest">Autora <a href="https://conexioncristal.com/" target="_blank" class="hover:opacity-80 transition-opacity">Kari González</a></h2>
-            <h1 class="serif text-5xl md:text-8xl font-bold mb-10 leading-tight">El Camino de Regreso <br> <span class="italic font-light">al Origen</span></h1>
-            <p class="text-lg md:text-2xl text-slate-300 mb-12 italic">"No viniste a escapar de la vida. Viniste a habitarla."</p>
+    
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-0 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+            <span class="serif text-base md:text-xl gold-text font-bold tracking-[0.2em] uppercase text-center w-full md:w-auto">
+                Regreso al Origen
+            </span>
+            <div class="grid grid-cols-2 md:flex gap-2 w-full md:w-auto">
+                <a href="https://oraculo-regresoalorigen.github.io/tirada-virtual/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="text-[10px] md:text-xs bg-indigo-600 text-white px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-1.5 w-full">
+                   <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                   <span>Oráculo</span>
+                </a>
+                <button onclick="descargarDesdeDrive('ebook_impresion')" 
+                   class="text-[10px] md:text-xs border border-slate-700 bg-slate-900/50 text-slate-300 px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-slate-800 hover:border-slate-500 transition-all flex items-center justify-center gap-1.5 w-full">
+                   <i data-lucide="printer" class="w-3.5 h-3.5 text-amber-500/80"></i>
+                   <span>Impresión</span>
+                </button>
+                <button onclick="descargarDesdeDrive('audio')" 
+                   class="text-[10px] md:text-xs bg-[#D4AF37] text-white px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all shadow-lg shadow-[#D4AF37]/20 flex items-center justify-center gap-1.5 w-full">
+                   <i data-lucide="headphones" class="w-3.5 h-3.5"></i>
+                   <span>Audio</span>
+                </button>
+                <button onclick="descargarDesdeDrive('guia')" 
+                   class="text-[10px] md:text-xs border border-[#D4AF37] text-[#D4AF37] px-3 py-2.5 md:px-5 rounded-xl md:rounded-full font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 transition-all flex items-center justify-center gap-1.5 w-full">
+                   <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                   <span>Sonidos</span>
+                </button>
+            </div>
         </div>
-    </section>
+    </nav>
+    <div class="h-20"></div>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-32 space-y-40">
-        
-        <!-- BIENVENIDA E INTRODUCCIÓN COMPLETA -->
-        <article class="full-text-content">
-            <p class="text-xl leading-relaxed text-slate-300 mb-20 italic border-l-4 border-gold/50 pl-8">
-                Has atendido esa incomodidad suave que te trajo hasta aquí. Al abrir este espacio sagrado, no solo has adquirido un libro; has reclamado un mapa para recuperar las partes de ti que quedaron dispersas en el tiempo. Este es el inicio de tu <strong>Regreso al Origen</strong>.
+    <main class="max-w-6xl mx-auto px-6 py-12">
+
+        <section id="welcome" class="mb-20 text-center">
+            <div class="inline-block px-4 py-1 rounded-full border border-mystic-gold/20 bg-mystic-gold/5 text-mystic-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-8">
+                Dashboard de Miembros
+            </div>
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6 italic gold-gradient-text">Experiencia Inmersiva - El camino de regreso a tu origen</h1>
+            <p class="text-mystic-cream/70 max-w-2xl mx-auto leading-relaxed text-lg">
+                Bienvenida al centro de mando de tu transformación. Navega por las dimensiones de tu regreso al origen: <strong>Lectura, Sonido y Oráculo.</strong>
             </p>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
-        <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
-            
-            <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
-                <div class="mb-6">
-                    <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
-                        <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
-                             alt="[Auriculares]" 
-                             class="w-12 h-12 object-contain brightness-125 contrast-110">
+        </section>
+
+        <section id="resources" class="mb-32">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
+                <h2 class="font-playfair text-4xl font-bold text-mystic-gold">Dimensiones del Ser</h2>
+                <p class="text-[10px] uppercase tracking-widest font-bold opacity-40">Selecciona una herramienta para iniciar</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="resource-card glass-panel p-8 rounded-3xl border-mystic-gold/30 bg-mystic-gold/5 flex flex-col justify-between h-80">
+                    <div>
+                        <div class="w-12 h-12 bg-mystic-gold/20 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="book-open-check" class="text-mystic-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl font-bold mb-2">EBOOK Interactivo</h3>
+                        <p class="text-sm text-mystic-cream/40 italic">La experiencia digital completa en alta resolución.</p>
                     </div>
+                    <a href="#inicio-libro" class="w-full py-4 rounded-xl bg-mystic-gold text-mystic-dark font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">Abrir Lectura</a>
                 </div>
 
-                <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
-                
-                <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
-                    <i data-lucide="info" class="gold-text w-4 h-4"></i>
-                    <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="printer" class="text-mystic-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl font-bold mb-2">Edición Impresa</h3>
+                        <p class="text-sm text-mystic-cream/40 italic">PDF optimizado para A4 y encuadernación física.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1r1rBzJN8vm3TbOipu04hTZny70wsA48c/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir en Pantalla Completa</a>
                 </div>
 
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
-                    Para que la tecnología de sonido actúe sobre tu sistema nervioso equilibrando tus hemisferios cerebrales, es estrictamente indispensable escuchar esta frecuencia binaural con auriculares estereofónicos.
+                <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="headphones" class="text-mystic-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl font-bold mb-2">Audiolibro Completo</h3>
+                        <p class="text-sm text-mystic-cream/40 italic">Mas 10 claves binaurales. Ondas Theta y Delta. </p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir Guía de Audios</a>
+                </div>
+
+                <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="zap" class="text-mystic-gold w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl font-bold mb-2">Guía Binaural</h3>
+                        <p class="text-sm text-mystic-cream/40 italic">Manual maestro de códigos y ondas cerebrales.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir Guía de Frecuencias</a>
+                </div>
+
+                <div class="resource-card glass-panel p-8 rounded-3xl border-purple-500/30 bg-mystic-purple/5 flex flex-col justify-between h-80">
+                    <div>
+                        <div class="w-12 h-12 bg-mystic-purple/20 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="sparkles" class="text-mystic-purple w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl font-bold mb-2">Oráculo Digital</h3>
+                        <p class="text-sm text-mystic-cream/40 italic">Aplicación interactiva de tirada virtual.</p>
+                    </div>
+                    <a href="https://oraculo-regresoalorigen.github.io/tirada-virtual/" target="_blank" class="w-full py-4 rounded-xl bg-mystic-purple text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-mystic-purple/80 transition-all">Iniciar Tirada</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="inicio-libro" class="min-h-[auto] md:min-h-screen flex items-center justify-center relative pt-24 pb-12 md:pt-20 px-6 gradient-bg text-center">
+            <div class="max-w-4xl relative z-10 fade-in">
+                <h2 class="serif italic text-xl md:text-3xl gold-text mb-6 tracking-widest">Autora <a href="https://conexioncristal.com/" target="_blank" class="hover:opacity-80 transition-opacity">Kari González</a></h2>
+                <h1 class="serif text-5xl md:text-8xl font-bold mb-10 leading-tight">El Camino de Regreso <br> <span class="italic font-light">al Origen</span></h1>
+                <p class="text-lg md:text-2xl text-slate-300 mb-12 italic">"No viniste a escapar de la vida. Viniste a habitarla."</p>
+            </div>
+        </section>
+
+        <div class="max-w-4xl mx-auto px-6 py-32 space-y-40">
+            
+            <article class="full-text-content">
+                <p class="text-xl leading-relaxed text-slate-300 mb-20 italic border-l-4 border-gold/50 pl-8">
+                    Has atendido esa incomodidad suave que te trajo hasta aquí. Al abrir este espacio sagrado, no solo has adquirido un libro; has reclamado un mapa para recuperar las partes de ti que quedaron dispersas en el tiempo. Este es el inicio de tu <strong>Regreso al Origen</strong>.
                 </p>
 
-                <!-- Reproductor de Audio Embebido Nativo (Estilizado) -->
-                <div class="w-full max-w-md bg-slate-950 border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-                    <audio id="audio-binaural" class="hidden" src="https://drive.google.com/uc?export=download&id=1uD9qT7bWkG2A8v5eX0y47fFk68UvLh0z"></audio>
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
+                                Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1la4xm_oOETszZRhX1DHzmsO9ZNQGv34I/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Introducción
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="serif text-4xl md:text-6xl gold-text mb-12 uppercase tracking-widest text-center">INTRODUCCIÓN</h2>
+                <h3 class="serif text-2xl md:text-3xl mb-12 italic text-center">El Porqué de este Viaje: Recordar lo que nunca se perdió</h3>
+                <div class="space-y-6">
+                    <p class="dropcap">Este libro no nació como un proyecto planificado; nació como una necesidad imperiosa del alma. No comenzó con un gran estallido, sino con una <strong>incomodidad suave</strong>.</p>
+                    <p>Todo parecía estar en orden en mi vida y, sin embargo, algo en mí sabía que no estaba habitando mi verdad. Había una música que mi alma recordaba, pero que ya no lograba escuchar en el ruido del mundo. Fue entonces cuando, en medio del silencio, decidí atender el llamado.</p>
+                    <p>A lo largo de los años, mientras acompañaba procesos de autoconocimiento, guiaba meditaciones, retiros y clases de Yoga, y enseñaba que todo en el universo es energía, frecuencia y vibración, siempre llegaba a la misma certeza: <strong>no estamos rotos; simplemente estamos desconectados de nuestra esencia.</strong></p>
                     
-                    <button onclick="toggleAudio()" id="btn-play" class="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center hover:scale-105 active:scale-95 transition-all text-slate-950">
-                        <i data-lucide="play" class="w-6 h-6 ml-0.5" id="icon-play"></i>
-                    </button>
+                    <h4 class="serif text-3xl gold-text mt-20 mb-6 uppercase tracking-wider">El Nacimiento de un Camino</h4>
+                    <p>Así nació primero el <strong>Oráculo "Regreso al Origen"</strong>. Diseñé veintiuna llaves, veintiún arquetipos que no buscan predecir el futuro, sino actuar como espejos para recordarnos quiénes somos. Cada carta es una puerta.</p>
+                    <p>Sin embargo, comprendí que hacía falta algo más: un mapa, un sendero que uniera esos puntos. Este libro es ese camino.</p>
+                    <p>No esperes encontrar aquí un método rígido, un desafío externo o una fórmula mágica. Lo que tienes en tus manos es un recorrido interno dividido en siete portales —siete estaciones del alma— más un <strong>Portal 33</strong>, un umbral de maestría que tiene el poder de transmutarlo todo.</p>
                     
-                    <div class="flex-1 text-left">
-                        <p class="text-xs font-bold tracking-wider text-[#D4AF37] uppercase">Frecuencia de Centrado 432Hz</p>
-                        <p class="text-[10px] text-slate-500">Kari González — Sonido de Fondo</p>
+                    <h4 class="serif text-3xl gold-text mt-20 mb-6 uppercase tracking-wider">Tu Ritmo, Tu Conciencia</h4>
+                    <p>Aquí, el calendario no tiene poder; el ritmo lo marca tu propia conciencia. Puedes atravesar estos portales en siete días, en siete semanas o en el tiempo que tu proceso sagrado necesite. El Origen no tiene prisa; siempre ha estado esperándote.</p>
+                    <p>En estas páginas no vas a aprender nada "nuevo". Vas a recordar.</p>
+                    <ul class="space-y-3 list-disc pl-8 text-indigo-300">
+                        <li>Recordarás que tu cuerpo es un templo sagrado.</li>
+                        <li>Que tu emoción es una maestra, no una enemiga.</li>
+                        <li>Que tu sombra es simplemente esa parte de tu luz que aún no te has atrevido a mirar.</li>
+                        <li>Que tu coherencia es la fuerza que ordena tu realidad.</li>
+                        <li>Y, sobre todo, recordarás que la Fuente siempre ha vivido en ti.</li>
+                    </ul>
+                    <p class="pt-8">Esta es una invitación formal a caminar contigo misma/o, a dejar de buscar las respuestas afuera y a empezar a confiar, finalmente, en tu Maestro Interior.</p>
+                    <p class="serif text-2xl italic font-bold text-center py-12">Si estas palabras han hecho eco en tu corazón, el regreso ya ha comenzado.</p>
+                </div>
+            </article>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
+                <h2 class="serif text-3xl md:text-4xl gold-text mb-8 uppercase tracking-tighter">GUÍA DE NAVEGACIÓN: Tu Experiencia Inmersiva</h2>
+                <div class="space-y-10 text-lg text-slate-300">
+                    <div class="flex gap-6"><span class="text-3xl">-</span><p><strong>Siente mi voz:</strong> En cada portal encontrarás un acceso a un audio. Te recomiendo darle play antes de comenzar la lectura. He grabado estas palabras con una intención vibracional específica para ayudarte a disolver el ruido mental y entrar en estado de presencia.</p></div>
+                    <div class="flex gap-6"><span class="text-3xl">-</span><p><strong>Tu Hoja de Ruta:</strong> Cruzarás siete portales de conciencia antes de llegar al Umbral de Maestría (Portal 33). No hay prisa; el ritmo no lo marca el calendario, lo marca tu propia alma.</p></div>
+                    <div class="flex gap-6"><span class="text-3xl">-</span><p><strong>Consulta las Llaves:</strong> Si te sientes bloqueada o necesitas claridad extra, utiliza el Oráculo de Regreso al Origen. Deja que la sincronicidad te entregue el arquetipo que necesitas integrar en ese momento.</p></div>
+                    <div class="flex gap-6"><span class="text-3xl">-</span><p><strong>Habita tus respuestas:</strong> No pases de largo las preguntas de reflexión. Si estás leyendo la versión digital interactiva, puedes escribir directamente en los espacios sombreados. Si prefieres lo físico, usa tu diario personal. Recuerda: lo que se escribe, se ancla.</p></div>
+                    <p class="text-right serif italic text-2xl pt-8 gold-text">Bienvenida. Bienvenido. Comenzamos..<br>— Kari González</p>
+                </div>
+            </section>
+
+            <article class="space-y-16 full-text-content">
+                <h2 class="serif text-4xl md:text-5xl gold-text text-center uppercase tracking-widest">PREPARANDO EL TERRENO: El Lenguaje del Origen</h2>
+                <p class="text-center italic">Antes de comenzar a caminar, es necesario que sintonicemos nuestro lenguaje. Si conceptos como "vibración", "energía" o "consciencia" te resultan nuevos, no te preocupes: son simplemente los nombres que le damos a la naturaleza real de lo que eres.</p>
+
+                <div class="space-y-12">
+                    <div class="space-y-4">
+                        <h4 class="serif text-3xl gold-text">1. El Universo es un Gran Concierto (Vibración)</h4>
+                        <p>Todo en el universo, desde la piedra más pesada hasta el pensamiento más sutil, está en constante movimiento. Nada está quieto. Tú eres una antena emisora y receptora de frecuencia, de información.</p>
+                        <p>Imagina que tus emociones son estaciones de radio. El miedo, la culpa o la vergüenza vibran en una frecuencia "pesada" y lenta. La paz, el amor y la alegría vibran en una frecuencia "ligera" y rápida. El Dr. David Hawkins, en su Mapa de la Consciencia, logró calibrar estas emociones: mientras que la culpa vibra en unos ínfimos 30 puntos, la paz se eleva por encima de los 600.</p>
+                        <p>Este libro no busca enseñarte teorías; funciona como un <strong>ecualizador</strong>. Su propósito es ayudarte a mover el dial de tu sintonía para que dejes de resonar con el conflicto y comiences a sintonizar tu frecuencia original.</p>
+                    </div>
+
+                    <div class="py-16 px-8 border-y border-gold/20 text-center bg-white/5 rounded-2xl">
+                        <p class="handwriting text-4xl md:text-6xl leading-tight mb-8">"Existe una verdad urgente que quiero que abraces antes de seguir avanzando: no te mueras con tu música dentro de ti."</p>
+                        <p class="text-slate-400 max-w-2xl mx-auto italic text-lg">Esa melodía única que sientes vibrar en tus silencios, ese don, esa forma tan tuya de ver y amar el mundo, no te pertenece solo a ti; es tu contribución necesaria al gran concierto de la existencia. Quizás has pasado gran parte de tu vida buscando el escenario perfecto o esperando una invitación formal para ser quien eres, sin darte cuenta de que el instrumento ya está afinado en tu interior. El mundo no necesita que seas una copia de alguien más; necesita tu nota original, tu frecuencia auténtica. El momento de descubrirla, de subirle el volumen y de entregarla es hoy. No permitas que el miedo al juicio silencie el canto de tu alma.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="serif text-3xl gold-text">2. El Cuerpo como Instrumento: Sonido y Cerebro</h4>
+                        <p>Tu cuerpo físico no es solo materia; es un resonador biológico compuesto en su mayoría por agua, el mejor conductor de sonido que existe. Por eso, las herramientas que acompañan este libro (los audios y las frecuencias) no son ornamentales: son medicina vibracional.</p>
+                        <p>En este camino utilizaremos Música Binaural y Sonidos Armónicos. ¿Qué significa esto?</p>
+                        <ul class="space-y-3 list-disc pl-8">
+                            <li><strong>Música Binaural:</strong> Al usar auriculares, enviamos frecuencias ligeramente distintas a cada oído. Tu cerebro, al procesar esta diferencia, crea un "tercer sonido" interno que lo induce a estados específicos.</li>
+                            <li><strong>Ondas Theta:</strong> Nos enfocaremos especialmente en las frecuencias que inducen el estado Theta (4-8 Hz). Este es el estado del sueño profundo, de la meditación y de la hipnosis. Es aquí donde la mente crítica se relaja y podemos acceder al "disco duro" de tu inconsciente para reprogramar creencias y sanar memorias. Cuando escuchas estos sonidos, estás permitiendo que tu sistema nervioso se reorganice, reduciendo el cortisol (estrés) y abriendo la puerta a la intuición profunda.</li>
+                        </ul>
+                    </div>
+
+                    <div class="my-8 group">
+                        <div class="relative p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950 border border-gold-text/20 transition-all duration-500 hover:border-gold-text/50 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)] overflow-hidden">
+                            <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#D4AF37]/5 blur-3xl rounded-full group-hover:bg-[#D4AF37]/10 transition-all duration-700"></div>
+                            <div class="flex flex-col md:flex-row gap-6 items-center md:items-start relative z-10">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold-text/10 border border-gold-text/30 flex items-center justify-center shadow-inner">
+                                    <i data-lucide="file-down" class="gold-text w-6 h-6 animate-pulse"></i>
+                                </div>
+                                <div class="flex-grow text-center md:text-left">
+                                    <h4 class="serif text-lg gold-text italic mb-2 tracking-wide">Recurso Adicional</h4>
+                                    <p class="text-slate-300 leading-relaxed opacity-90 mb-4">
+                                        <a href="https://drive.google.com/file/d/1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP/view?usp=sharing" target="_blank" class="gold-text font-bold underline decoration-gold-text/30 underline-offset-4 hover:text-white transition-all">Aquí podrás descargarte el PDF</a> con la explicación de las Ondas cerebrales y tendrás acceso a más de 20 audios con los beneficios en el sistema nervioso y en todo el ser.
+                                    </p>
+                                    <a href="https://drive.google.com/file/d/1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP/view?usp=sharing" target="_blank" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold gold-text border-b border-gold-text/40 pb-1 hover:border-gold-text hover:text-white transition-all">Descargar Guía de Ondas <i data-lucide="chevron-right" class="w-3 h-3"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-900/10 p-10 rounded-3xl border border-indigo-500/20">
+                        <h4 class="serif text-3xl gold-text mb-8 uppercase tracking-widest text-center">3. La Escalera vibracional: ¿Desde dónde vives?</h4>
+                        <div class="space-y-8">
+                            <p>Para regresar al Origen, primero debemos reconocer en qué escalón de nuestra evolución estamos parados. Existen tres instancias principales en la experiencia humana:</p>
+                            <div class="relative group max-w-2xl w-full cursor-pointer mx-auto" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/prueba-estado-de-consciencia.jpg?v=1776043067')">
+                                <div class="absolute -inset-1 bg-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
+                                <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/prueba-estado-de-consciencia.jpg?v=1776043067" alt="Prueba Estado de Consciencia" class="w-full h-auto mx-auto" />
+                                </div>
+                            </div>
+                            <p><strong>1. Estado "A MÍ" (El Victimismo):</strong> Es el nivel más denso. Aquí sentimos que las cosas "nos pasan". Vivimos desde el porqué: "¿Por qué a mí? ¿Por qué la vida es tan dura?". En este estado, la culpa y el juicio dominan nuestra realidad. Estamos separados de nuestro poder, esperando que algo afuera nos salve.</p>
+                            <p><strong>2. Estado "POR MÍ" (El Hacedor):</strong> Es el nivel del control. Aquí descubrimos que tenemos poder y empezamos a "hacer, hacer y hacer" para conseguir resultados. Es el mundo del esfuerzo, de manifestar a través de la voluntad del ego. Es un avance, pero es agotador, porque nos olvidamos del Ser por estar ocupados en el Tener.</p>
+                            <p><strong>3. Estado "A TRAVÉS DE MÍ" (La Entrega):</strong> Este es el propósito de este libro. Aquí soltamos el control excesivo y permitimos que el Espíritu, la Fuente o tu Sabiduría Interna hable y actúe a través de ti. Ya no empujas la vida; dejas que la vida te atraviese, te entregas a ella. Es el estado de Escucha del Alma, donde tu cuerpo se vuelve un canal limpio para que la divinidad se exprese en la tierra.</p>
+                            
+                            <div class="relative group max-w-2xl w-full cursor-pointer mx-auto" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/mapa-a-traves-de-mi.jpg?v=1776042811')">
+                                <div class="absolute -inset-1 bg-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
+                                <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/mapa-a-traves-de-mi.jpg?v=1776042811" alt="Mapa El Camino de Regreso al Origen" class="w-full h-auto mx-auto" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-12 md:p-20 bg-slate-900 rounded-[3rem] border border-gold/30 text-center space-y-8 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text uppercase tracking-widest">EL COMPROMISO CON TU EXPERIENCIA</h4>
+                        <div class="italic text-slate-200 text-xl leading-relaxed space-y-6">
+                            <p>"Te invito a soltar tus mapas mentales y a silenciar la voz del ego intelectual, esa que se alimenta del 'ya lo sé', 'esto ya lo leí' o 'lo vi en un video'. No estamos aquí para acumular conocimiento racional, sino para vaciarnos de teorías y permitir que la Verdad nos atraviese."</p>
+                            <p>"Venimos a cruzar la experiencia por el cuerpo, anclando la luz en cada una de tus células. La nueva humanidad no reside en un pensamiento elevado ni en una idea abstracta; es la divinidad encarnada, viva y vibrante en tu propia materia. Ríndete a la sensación de estar viva. Deja fuera tus conceptos aprendidos y atrévete a habitar tu carne, porque en este camino, lo que no pasa por el cuerpo, no se transforma. Es momento de sentir, no de comprender. Deja que tu biología sea el canal y la experiencia, tu única maestra."</p>
+                        </div>
+                        <p class="serif not-italic gold-text font-bold pt-4 text-2xl uppercase tracking-[0.3em]">de mi cuerpo al tuyo, Kari</p>
+                    </div>
+                </div>
+            </article>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal1">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">01</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal I</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12">La Primera Llama: Escuchando el llamado</h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
+                                Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1x-I1_hSdoUs5-lkHBEiiW8iz8NonZ0lZ/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Escuchar Portal I
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <div class="my-20 flex justify-center px-4">
+                        <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal1-el-llamado-libro-el-camino-de-regreso-al-origen.jpg?v=1776052631')">
+                            <div class="absolute -inset-1 bg-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
+                            <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                                <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal1-el-llamado-libro-el-camino-de-regreso-al-origen.jpg?v=1776052631" alt="Portal I - El Llamado" class="w-full h-auto block" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                    <p>El despertar no suele comenzar con un gran estallido, sino con una incomodidad suave y persistente. Es esa sensación de que, aunque "todo parece estar bien" afuera, algo adentro ha dejado de encajar. Es el alma susurrando que ya es hora de dejar de sobrevivir para empezar a ser.</p>
+                    <p>A veces, el llamado se disfraza de un cansancio que el sueño no logra curar. Te despiertas, cumples con tus tareas, sonríes para el mundo y, sin embargo, al final del día queda un residuo de insatisfacción que no logras explicar. Es la "incomodidad de lo que ya no te queda bien". Como un traje que se volvió pequeño, tu vida actual aprieta, limita tu respiración y restringe tu movimiento. No es que algo esté mal en ti; es que tu ser ha crecido y tu realidad todavía no se ha enterado. Lo que antes te daba seguridad, hoy te resulta estrecho.</p>
+                    <p>Esa incomodidad no es otra cosa que una disonancia. Tu frecuencia original está intentando emitir una nota clara, pero se choca con el ruido de las expectativas ajenas, los miedos heredados y el automatismo de la supervivencia. Es como intentar escuchar una melodía sagrada en medio de una multitud gritando. El llamado es el instante en el que decides bajarle el volumen al mundo para volver a sintonizar tu propio pulso primigenio.</p>
+                    <p>A menudo, solemos confundir este vacío con tristeza, cuando en realidad es espacio disponible. El alma necesita que algo se vacíe para que lo nuevo pueda entrar. Mirar el vacío a los ojos es el acto más valiente que puedes realizar: es dejar de intentar llenar los huecos con ruido mental, con compras o con distracciones, y permitir que el silencio te hable. En ese vacío no hay nada que temer; ahí es donde se encuentra la semilla de todo lo que realmente eres.</p>
+                    <p>Este primer portal es el reconocimiento de esa llama interna que reclama su lugar. Es el momento en que dejas de ignorar el vacío, dejas de huir de tu propia profundidad y te atreves, por fin, a mirarte a los ojos. Había una música que recordabas, pero que ya no escuchabas en el mundo... y entonces, atendiste el llamado.</p>
+
+                    <div class="bg-indigo-500/10 p-8 md:p-12 rounded-2xl border border-indigo-500/20 my-12">
+                        <h4 class="serif text-2xl gold-text mb-6 uppercase tracking-widest">Práctica del Portal I: La Escucha Consciente</h4>
+                        <p class="mb-4">Permite que tu respiración te traiga al presente.</p>
+                        <ol class="space-y-6">
+                            <li><strong>1. Identifica la incomodidad:</strong> Cierra los ojos y localiza en qué parte de tu cuerpo se siente esa "llamada". ¿Es una presión en el pecho? ¿Un nudo en la garganta? ¿Un vacío en el plexo? No intentes cambiarlo, solo obsérvalo.</li>
+                            <li><strong>2. La pregunta de poder:</strong> Coloca tu mano sobre esa zona y pregunta en silencio: “¿Qué es lo que mi alma está intentando recordarme hoy?”.</li>
+                            <li><strong>3. El Decreto de Apertura:</strong> Repite en voz alta o para tus adentros: <span class="italic text-slate-100 block mt-2">"Hoy dejo de huir de mi propio vacío. Abro mi corazón para escuchar la verdad que habita en mi incomodidad. Estoy lista para regresar."</span></li>
+                        </ol>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración</h4>
+                        <p class="italic text-slate-400 text-sm">Escribe aquí lo que sentiste al atender ese primer llamado. ¿Qué voces o miedos aparecieron?</p>
+                        <textarea data-note-id="portal1-notes" id="portal1-notes" class="reflection-area note-input" placeholder="Escribe tus reflexiones aquí..."></textarea>
+                        <div class="save-status" data-status-id="portal1-notes"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal2">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">02</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal II</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 uppercase tracking-wide">El Templo Interior: Habitando y Purificando el Vehículo del Alma</h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
+                                Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1xYr4VV61GAJcfH4AkPYSQbIH15jyJJ4l/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Escuchar Portal II
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <div class="my-20 flex justify-center px-4">
+                        <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal2-la-respiracion-libro-el-camino-de-regreso-al-origen.jpg?v=1776053707')">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold/20 to-indigo-500/10 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700 pointer-events-none"></div>
+                            <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                                <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal2-la-respiracion-libro-el-camino-de-regreso-al-origen.jpg?v=1776053707" alt="Portal II - La Respiración" class="w-full h-auto block" loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                    <p>Si el Portal I fue el despertar de la consciencia, el Portal II es el aterrizaje sagrado en la materia. Solíamos vivir de las cejas hacia arriba, atrapados en un laberinto de pensamientos. Pero para que la luz sea útil, debe ser encarnada. Tu cuerpo no es un envase; es un resonador biológico, el altar donde tu divinidad se hace carne. Sin embargo, para que este resonador emita una nota clara, el instrumento debe estar limpio.</p>
+
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">La Biología como Antena: Limpiando el "Ruido"</h4>
+                    <p>Imagina que tu cuerpo es una radio de alta precisión. Si los cables están sulfatados o hay interferencias, no podrás sintonizar la frecuencia del Origen. Hoy en día, nuestra biología está saturada de lo que llamamos "ruido de baja frecuencia". Para habitar el templo, es imperativo revisar qué estamos dejando entrar en él:</p>
+                    <ul class="space-y-6">
+                        <li><strong>La Alquimia de la Alimentación:</strong> El azúcar, las harinas refinadas y el alcohol no son solo alimentos; son información que "anestesia" tu sistema nervioso. Al consumirlos, creas un velo que nubla tu intuición. Quitar estos elementos es quitarle peso a tu alma.</li>
+                        <li><strong>Vicios que Silencian:</strong> El cigarrillo y otros escapes químicos son parches para no sentir el vacío del Portal I. Al soltarlos, permites que tu energía vital (Prana) vuelva a fluir sin obstáculos.</li>
+                        <li><strong>Los Huéspedes del Olvido (Desparasitación):</strong> No podemos hablar de salud sin hablar de soberanía. Los parásitos no son solo biológicos, son ladrones de energía que alteran tus deseos y estados de ánimo. Existe una relación directa entre el terreno biológico descuidado, la presencia parasitaria y enfermedades crónicas como el cáncer, que muchas veces es el grito final de un cuerpo que ha perdido su equilibrio y su orden original. Desparasitarse es, en esencia, recuperar el mando de tu propia casa.</li>
+                    </ul>
+
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">Recalibración Celular: El Poder del Sonido</h4>
+                    <p>Como somos un 70% agua, el sonido es nuestra medicina más directa. Cuando te entregas al sonido de los Cuencos de Cristal de Cuarzo o al rugido cósmico del Gong, no solo estás escuchando música; estás recibiendo un masaje a nivel atómico. Estas frecuencias penetran en tu estructura ósea y celular, "limpiando" las memorias de dolor y recalibrando tu vibración. Es como si el universo mismo viniera a afinar las cuerdas de tu corazón.</p>
+
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">Rituales de Tierra y Luz</h4>
+                    <p>Para que tu espíritu se quede aquí, en la tierra, necesitas raíces:</p>
+                    <ul class="space-y-4">
+                        <li><strong>El Ejercicio como Rezo:</strong> Mover el cuerpo es decirle a la vida: "Aquí estoy, ocupando mi lugar". El movimiento drena la toxicidad emocional.</li>
+                        <li><strong>Earthing (Pisar la Tierra):</strong> Camina descalza sobre el pasto o la arena. Descarga la electricidad estática de las pantallas y recibe los electrones de la Madre Tierra. Es el anclaje más poderoso que existe.</li>
+                        <li><strong>Higiene Lumínica:</strong> Tus ojos son portales. Apagar las pantallas al menos una hora antes de dormir permite que tu glándula pineal reconozca la noche y te entregue un descanso reparador, preparándote para el viaje astral del sueño.</li>
+                    </ul>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/20 my-12">
+                        <h4 class="serif text-2xl gold-text mb-6 uppercase tracking-widest text-center">Práctica del Portal II: El Rezo de la Materia</h4>
+                        <p class="mb-6 italic text-center text-sm">Siente cómo las ondas Theta empiezan a masajear tu cerebro.</p>
+                        <ol class="space-y-6">
+                            <li><strong>1. Escaneo de Verdad:</strong> Cierra los ojos y siente cómo la gravedad te sostiene. No intentes "hacer" nada, solo siente el contacto de tus pies con la tierra o de tu cuerpo con la silla. Recorré tu cuerpo. ¿Dónde hay tensión? ¿Dónde hay un nudo que se alimenta de azúcar o de palabras no dichas?</li>
+                            <li><strong>2. El Compromiso Biológico:</strong> Lleva tu atención a los latidos de tu corazón. Es tu música interna, el pulso que te conecta con la Fuente desde antes de nacer. Coloca tus manos sobre tu vientre y susurra: "Cuerpo mío, perdón por haberte ignorado. Gracias por sostenerne incluso cuando yo no estaba presente. Hoy elijo purificar tus canales. Elijo la luz en mi comida, el aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo a habitarte."</li>
+                            <li><strong>3. Habita la zona de tensión:</strong> Si encuentras un punto de dolor o incomodidad, no lo rechaces. Respira dentro de él. Imagina que tu respiración es luz que suaviza esa zona. Pregúntale a esa parte de tu cuerpo: “¿Qué mensaje tienes para mí hoy?”.</li>
+                        </ol>
+                        <p class="italic mb-8 text-center p-4 bg-indigo-900/30 rounded-xl">"Habito mi cuerpo con amor y respeto. Reconozco que mi carne es sagrada y que mi presencia es el puente entre el cielo y la tierra. Aquí y ahora, elijo estar presente en mi propia vida."</p>
                         
-                        <!-- Barra de Progreso Personalizada -->
-                        <div class="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden cursor-pointer" onclick="seekAudio(event)" id="audio-progress-bar">
-                            <div class="bg-[#D4AF37] h-full w-0 transition-all duration-300" id="audio-progress-fill"></div>
+                        <h4 class="serif text-xl gold-text uppercase text-sm tracking-widest mb-4">Espacio de Integración</h4>
+                        <p class="text-sm italic text-slate-400 mb-4">¿Qué "ruido" (harinas, azúcar, pantallas, vicios, relaciones tóxicas) estás lista para soltar hoy para que tu música pueda sonar? ¿Cómo se siente tu cuerpo ahora? ¿Hay alguna zona que te cueste "habitar" o mirar? Registra la sensación de "espacio" interno.</p>
+                        <textarea data-note-id="portal2-notes-1" id="portal2-notes-1" class="reflection-area note-input" placeholder="Escribe aquí..."></textarea>
+                        <div class="save-status" data-status-id="portal2-notes-1"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal3">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">03</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal III</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 uppercase tracking-wide">El Fuego del Linaje: Honrando la historia para liberar el futuro</h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
+                                Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1aD35tazB5-dMt_6j_BihBTDKH2vp3BAk/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal III
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Script Inline de Soporte para el Reproductor de Audio -->
-    <script>
-        const audio = document.getElementById('audio-binaural');
-        const playBtn = document.getElementById('btn-play');
-        const playIcon = document.getElementById('icon-play');
-        const fill = document.getElementById('audio-progress-fill');
-        const bar = document.getElementById('audio-progress-bar');
-
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                playIcon.setAttribute('data-lucide', 'pause');
-                playIcon.classList.remove('ml-0.5');
-            } else {
-                audio.pause();
-                playIcon.setAttribute('data-lucide', 'play');
-                playIcon.classList.add('ml-0.5');
-            }
-            lucide.createIcons();
-        }
-
-        audio.addEventListener('timeupdate', () => {
-            const pct = (audio.currentTime / audio.duration) * 100;
-            fill.style.width = pct + '%';
-        });
-
-        function seekAudio(e) {
-            const rect = bar.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const width = rect.width;
-            audio.currentTime = (clickX / width) * audio.duration;
-        }
-    </script>
-            <p>
-                Este camino no requiere que dejes de ser quien eres, sino que abandones las máscaras y las capas de cansancio que has ido acumulando para protegerte del mundo. Nos han enseñado a buscar la iluminación como si fuera una meta lejana en la cima de una montaña, pero la verdad es mucho más silenciosa: la sabiduría está en el descanso, en la rendición, en habitar el cuerpo que sostienes.
-            </p>
-            <p>
-                Durante las siguientes páginas, te invito a leer despacio. Deja que las palabras no solo entren por tus ojos, sino que resuenen en tu pecho. Para acompañarte de manera íntima, he integrado un sistema de <strong>Notas del Lector</strong> debajo de cada fragmento importante. Úsalo como tu altar personal: escribe tus incomodidades, tus revelaciones y tus silencios. Todo lo que dejes plasmado aquí se sincronizará automáticamente con tu cuenta en la nube, protegido y disponible para ti cada vez que regreses.
-            </p>
-        </article>
-
-        <hr class="border-white/5">
-
-        <!-- CAPÍTULO I: EL CANSANCIO SAGRADO -->
-        <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
-            <div class="max-w-3xl mx-auto space-y-12">
-                <div class="text-center space-y-4">
-                    <span class="serif italic text-lg md:text-2xl gold-text">Capítulo I</span>
-                    <h2 class="serif text-4xl md:text-6xl font-bold tracking-wide">El Cansancio Sagrado</h2>
-                    <div class="h-[1px] w-24 bg-[#D4AF37] mx-auto mt-6"></div>
-                </div>
-
-                <div class="full-text-content">
-                    <p>
-                        Existe un tipo de cansancio que no se cura durmiendo. Es ese agotamiento que se instala en los huesos, que pesa en la mirada y que apaga el entusiasmo por las cosas cotidianas. A menudo lo juzgamos como debilidad, como pereza o como una señal de que estamos fallando en la gestión de nuestra vida. Intentamos combatirlo con café, con agendas repletas, con metas de superación personal que solo aumentan la presión de la maquinaria.
-                    </p>
-                    <p class="italic text-[#D4AF37] text-center my-12 font-light text-xl md:text-2xl px-6">
-                        "El cansancio no es un error de tu biología; es la señal de que has estado sosteniendo un templo que ya no te pertenece."
-                    </p>
-                    <p>
-                        Cuando tu cuerpo dice "no más", no te está traicionando. Te está salvando. El cansancio sagrado es el mecanismo que tiene tu alma para obligarte a frenar cuando tu mente insiste en seguir corriendo en círculos. Es la grieta por donde se empieza a romper la estructura del personaje que construiste para complacer a los demás, para sentirte seguro, para ganarte el derecho a ser amado.
-                    </p>
-                    <p>
-                        Permítete estar cansado. Deja caer los hombros, relaja la mandíbula y siente el peso de tu cuerpo sostenido por la Tierra. No necesitas resolver tu vida hoy. Solo necesitas estar aquí, respirando la incomodidad de no hacer nada, hasta que el silencio vuelva a ser un lugar seguro.
-                    </p>
-                </div>
-
-                <!-- Bloque de Notas Privadas del Lector -->
-                <div class="mt-16 pt-12 border-t border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <i data-lucide="pen-tool" class="text-[#D4AF37] w-5 h-5"></i>
-                            <h4 class="serif italic text-xl text-white">Espacio de Altar y Reflexión</h4>
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal3-elfuego-del-linaje-libro-el-camino-de-regreso-al-origen.jpg?v=1776084660')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal3-elfuego-del-linaje-libro-el-camino-de-regreso-al-origen.jpg?v=1776084660" alt="Portal III - El Fuego del Linaje" class="w-full h-auto block" loading="lazy" />
                         </div>
-                        <span id="status-cap1" data-status-id="cap1" class="text-xs text-slate-500 font-bold uppercase tracking-widest">Sincronizado</span>
                     </div>
-                    <textarea 
-                        data-note-id="cap1" 
-                        class="note-input w-full h-40 bg-slate-950/80 border border-white/10 rounded-2xl p-6 text-slate-200 text-sm focus:border-[#D4AF37] transition-all resize-none custom-scrollbar"
-                        placeholder="Escribe lo que este capítulo despierta en ti... ¿Qué cargas estás listo para soltar hoy?"></textarea>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO II: EL RETORNO AL SILENCIO -->
-        <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
-            <div class="max-w-3xl mx-auto space-y-12">
-                <div class="text-center space-y-4">
-                    <span class="serif italic text-lg md:text-2xl gold-text">Capítulo II</span>
-                    <h2 class="serif text-4xl md:text-6xl font-bold tracking-wide">El Retorno al Silencio</h2>
-                    <div class="h-[1px] w-24 bg-[#D4AF37] mx-auto mt-6"></div>
                 </div>
 
-                <div class="full-text-content">
-                    <p>
-                        Vivimos en un mundo que le teme al vacío. Nos hemos vuelto adictos al ruido constante: la música de fondo, las notificaciones del celular, las conversaciones triviales que llenan el espacio para evitar mirarnos a los ojos. Creemos que si nos quedamos en silencio, la soledad nos va a devorar, o peor aún, que nos vamos a escuchar a nosotros mismos y no nos va a gustar lo que tenemos para decir.
-                    </p>
-                    <p class="italic text-[#D4AF37] text-center my-12 font-light text-xl md:text-2xl px-6">
-                        "El silencio no es la ausencia de sonido; es la presencia total de tu Ser."
-                    </p>
-                    <p>
-                        Sin embargo, es en el vacío donde todo se crea. Las notas musicales solo tienen sentido por el silencio que las separa; las palabras solo tienen poder cuando nacen de una pausa consciente. El retorno al silencio es el camino de regreso al estado de presencia pura, ese espacio donde ya no necesitas defender tus opiniones, ni justificar tus decisiones, ni sostener el relato de quién eres.
-                    </p>
-                    <p>
-                        Hoy, regálate cinco minutos de silencio absoluto. Apaga los dispositivos, cierra las cortinas y quédate quieto. No intentes meditar, ni visualizar, ni controlar tu mente. Solo observa el fluir de tu respiración y el latido de tu corazón como si fueran los únicos sonidos del universo. Deja que el silencio limpie tu mente de las opiniones ajenas y te devuelva tu centro natural.
-                    </p>
-                </div>
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Si el Portal I fue el llamado y el Portal II fue habitar tu templo, el Portal III es mirar los cimientos de ese templo. Tú no eres un ser aislado; eres la punta de un iceberg de miles de historias, dolores, sueños y silencios. Cruzar el portal del linaje es reconocer que llevas en tu sangre no solo el color de ojos de tus ancestros, sino también sus duelos no llorados, sus miedos al hambre y sus amores interrumpidos. Sin embargo, hay una verdad aún más profunda escondida en tus células.</p>
 
-                <!-- Bloque de Notas Privadas del Lector -->
-                <div class="mt-16 pt-12 border-t border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <i data-lucide="pen-tool" class="text-[#D4AF37] w-5 h-5"></i>
-                            <h4 class="serif italic text-xl text-white">Espacio de Altar y Reflexión</h4>
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">El ADN: Tu Biblioteca de Memorias Universales</h4>
+                    <p>Tu ADN no es solo un código biológico; es el depósito de tus Memorias Universales. En esta espiral sagrada se guarda toda tu información, existencia tras existencia. No solo heredas la historia de tu clan familiar, sino que conservas el registro de todo el recorrido de tu alma a través del tiempo y el espacio. Cada experiencia, cada aprendizaje y cada frecuencia que has encarnado en vidas pasadas está codificado allí, esperando el impulso correcto para despertar. Tu ADN es una antena conectada al Todo, una biblioteca viviente donde la "nueva humanidad" encuentra las llaves para su evolución. Sanar el linaje no es solo arreglar el pasado familiar, es limpiar el canal para que tu sabiduría universal pueda expresarse sin interferencias en esta encarnación.</p>
+
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">La Repetición como Lealtad Invisible</h4>
+                    <p>¿Alguna vez te has preguntado por qué repites ciertos patrones en tus vínculos, en tu relación con el dinero o en tus miedos más irracionales? A menudo, lo que llamamos "destino" es una lealtad ciega a nuestro clan o una memoria no resuelta de nuestro propio viaje existencial. Repetimos para pertenecer o para intentar "resolver" lo que quedó pendiente.</p>
+                    <p class="handwriting text-3xl text-center py-8">"El Fuego del Linaje no viene a quemar tu historia, viene a transmutarla. Venimos a dejar de ser 'copias' de nuestros ancestros para convertirnos en su mayor orgullo: el ser que se atrevió a sanar y a recordar su origen estelar."</p>
+
+                    <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">La Medicina del Sonido en el ADN</h4>
+                    <p>Hoy la epigenética nos dice que el entorno y las emociones pueden "encender" o "apagar" ciertos genes. Cuando usamos el Gong o los Cuencos de Cristal, estamos emitiendo una frecuencia que interactúa directamente con esta biblioteca celular. El sonido actúa como un lenguaje que el ADN reconoce. Al vibrar en armonía, las memorias de dolor se disuelven y las memorias de poder —tu verdadera herencia universal— se activan. Al sanar tú, sanan los que estuvieron y se libera el camino para los que vendrán.</p>
+
+                    <div class="bg-indigo-950/50 p-10 rounded-3xl border border-indigo-500/30 mt-12">
+                        <h4 class="serif text-2xl gold-text mb-6 uppercase tracking-widest text-center">Práctica del Portal III: El Despertar de la Memoria</h4>
+                        <p class="mb-6 text-sm text-center">Siente cómo las vibraciones penetran hasta el núcleo de tus células, donde reside tu verdad.</p>
+                        <ul class="space-y-6 mb-8">
+                            <li><strong>Visualiza la Espiral:</strong> Cierra los ojos y visualiza tu ADN como una escalera de luz dorada que se extiende hacia el infinito, hacia atrás y hacia adelante.</li>
+                            <li><strong>Identifica la Carga:</strong> Siente qué memoria o patrón familiar pesa hoy en tu cuerpo. Ponle un color.</li>
+                            <li><strong>El Decreto de Soberanía:</strong> <span class="italic block mt-2">"Reconozco en mi ADN la memoria de todas mis existencias y la fuerza de todos mis ancestros. Tomo la sabiduría y devuelvo el dolor. Hoy activo mi frecuencia original y elijo caminar en libertad. Soy la memoria universal encarnada en amor."</span></li>
+                        </ul>
+                        
+                        <h4 class="serif text-xl gold-text uppercase text-sm tracking-widest mb-4">Espacio de Integración</h4>
+                        <p class="italic text-slate-400 text-sm mb-4">¿Qué historia sientes que se repite en tu vida y que hoy comprendes que es una memoria guardada en tu ADN? Si pudieras hablarle a tu "yo" de todas tus existencias, ¿qué mensaje de paz le darías ahora?</p>
+                        <textarea data-note-id="portal3-notes" id="portal3-notes" class="reflection-area note-input" placeholder="Escribe aquí..."></textarea>
+                        <div class="save-status" data-status-id="portal3-notes"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal4">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">04</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal IV</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Abrazo de mi Sombra: <span class="italic font-light block md:inline text-slate-400">Integrando la totalidad para recuperar tu poder</span></h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1FNyS00BUs_QmrTm5aBwgilP5KB7LREpF/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal IV
+                            </a>
                         </div>
-                        <span id="status-cap2" data-status-id="cap2" class="text-xs text-slate-500 font-bold uppercase tracking-widest">Sincronizado</span>
                     </div>
-                    <textarea 
-                        data-note-id="cap2" 
-                        class="note-input w-full h-40 bg-slate-950/80 border border-white/10 rounded-2xl p-6 text-slate-200 text-sm focus:border-[#D4AF37] transition-all resize-none custom-scrollbar"
-                        placeholder="¿Qué te dice tu propia voz cuando todo el ruido exterior se apaga? Escríbelo aquí."></textarea>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO III: HABITAR EL TEMPLO -->
-        <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
-            <div class="max-w-3xl mx-auto space-y-12">
-                <div class="text-center space-y-4">
-                    <span class="serif italic text-lg md:text-2xl gold-text">Capítulo III</span>
-                    <h2 class="serif text-4xl md:text-6xl font-bold tracking-wide">Habitar el Templo</h2>
-                    <div class="h-[1px] w-24 bg-[#D4AF37] mx-auto mt-6"></div>
                 </div>
 
-                <div class="full-text-content">
-                    <p>
-                        Tu cuerpo no es un vehículo para transportar tu mente de una reunión a otra. No es una máquina estética que tienes que esculpir, corregir o camuflar para encajar en los cánones del mercado. Tu cuerpo es un templo biológico sagrado; es el altar donde tu divinidad ha elegido encarnar para experimentar el plano de la materia.
-                    </p>
-                    <p class="italic text-[#D4AF37] text-center my-12 font-light text-xl md:text-2xl px-6">
-                        "No tienes un cuerpo. Eres un alma que ha tomado la forma de la carne para poder sentir el roce del viento."
-                    </p>
-                    <p>
-                        Habitar el templo significa bajar de la cabeza y sentir los pies apoyados en el suelo, sentir el aire expandiendo las costillas, sentir el flujo de la sangre y el misterio del sistema inmunológico trabajando a cada segundo para mantenerte con vida. Nos hemos disociado tanto de nuestra biología que solo le prestamos atención cuando nos duele o nos limita, tratándolo con la frialdad de un mecánico que repara un motor dañado.
-                    </p>
-                    <p>
-                        Vuelve a tu cuerpo hoy. Toca tu piel con reverencia, agradece a tus piernas por sostener tus pasos, a tus manos por crear tu realidad, a tus ojos por registrar la belleza del mundo. Alimenta tu biología con alimentos vivos, dale agua limpia, muévela con suavidad y descanso. Cuando habitas plenamente tu cuerpo físico, la ansiedad se disuelve, el miedo pierde su agarre y vuelves a encajar perfectamente en el flujo natural de la vida.
-                    </p>
-                </div>
-
-                <!-- Bloque de Notas Privadas del Lector -->
-                <div class="mt-16 pt-12 border-t border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <i data-lucide="pen-tool" class="text-[#D4AF37] w-5 h-5"></i>
-                            <h4 class="serif italic text-xl text-white">Espacio de Altar y Reflexión</h4>
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal4-el-abrazo-de-mi-sombra.jpg?v=1776642680')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-slate-800/40 to-gold/10 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-700 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal4-el-abrazo-de-mi-sombra.jpg?v=1776642680" alt="Portal IV - El Abrazo de mi Sombra" class="w-full h-auto block" loading="lazy" />
                         </div>
-                        <span id="status-cap3" data-status-id="cap3" class="text-xs text-slate-500 font-bold uppercase tracking-widest">Sincronizado</span>
                     </div>
-                    <textarea 
-                        data-note-id="cap3" 
-                        class="note-input w-full h-40 bg-slate-950/80 border border-white/10 rounded-2xl p-6 text-slate-200 text-sm focus:border-[#D4AF37] transition-all resize-none custom-scrollbar"
-                        placeholder="Escribe una carta de disculpas o agradecimiento a tu cuerpo físico. Reconoce su sabiduría oculta."></textarea>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPÍTULO IV: LA MEDICINA DE LA ENTREGA -->
-        <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
-            <div class="max-w-3xl mx-auto space-y-12">
-                <div class="text-center space-y-4">
-                    <span class="serif italic text-lg md:text-2xl gold-text">Capítulo IV</span>
-                    <h2 class="serif text-4xl md:text-6xl font-bold tracking-wide">La Medicina de la Entrega</h2>
-                    <div class="h-[1px] w-24 bg-[#D4AF37] mx-auto mt-6"></div>
                 </div>
 
-                <div class="full-text-content">
-                    <p>
-                        El mayor sufrimiento humano no proviene de las circunstancias difíciles, sino de nuestra resistencia a aceptarlas. Nos desgastamos intentando controlar el futuro, forzando situaciones que no quieren fluir, sosteniendo vínculos que se caen a pedazos por puro miedo al vacío. Creemos que la entrega es sinónimo de derrota, de debilidad o de resignación pasiva, y por eso seguimos peleando batallas que el universo ya nos pidió abandonar.
-                    </p>
-                    <p class="italic text-[#D4AF37] text-center my-12 font-light text-xl md:text-2xl px-6">
-                        "La rendición no es perder la batalla; es comprender que el río de la vida sabe perfectamente hacia dónde corre."
-                    </p>
-                    <p>
-                        La verdadera entrega es un acto de soberanía espiritual y de profunda inteligencia. Es dejar de pelear contra lo que es para poder enfocar toda nuestra energía en lo que sí podemos transformar. Rendirse es abrir las manos, soltar el control de los resultados y confiar en que hay una inteligencia mayor —llámala Dios, Universo, Origen o Vida— que sostiene las estructuras del cosmos y que también sabe cómo sostener tu camino.
-                    </p>
-                    <p>
-                        Suelta el control hoy. Si hay una situación en tu vida que te drena la paz, que te genera insomnio o ansiedad, visualízala en tu mente, colócala en una esfera de luz dorada y entrégala. Di en voz alta o en silencio: *"Suelto los resultados, me abro a recibir lo que es para mi mayor bien y confío en el proceso de la vida"*. Siente el alivio inmediato en tu pecho al dejar de ser el único responsable de sostener el mundo.
-                    </p>
-                </div>
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Hasta ahora, hemos escuchado el llamado, habitado el cuerpo y honrado el linaje. Pero para regresar al Origen de forma definitiva, debemos atravesar el territorio que más solemos evitar: nuestra sombra.</p>
+                    
+                    <div class="py-12 px-8 border-y border-gold/20 text-center bg-white/5 rounded-2xl my-12">
+                        <p class="serif italic text-2xl md:text-3xl text-slate-100">"Uno no se ilumina imaginando figuras de luz, sino haciendo consciente su oscuridad."</p>
+                        <p class="mt-4 gold-text uppercase tracking-widest text-sm">— Carl Jung</p>
+                    </div>
 
-                <!-- Bloque de Notas Privadas del Lector -->
-                <div class="mt-16 pt-12 border-t border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <i data-lucide="pen-tool" class="text-[#D4AF37] w-5 h-5"></i>
-                            <h4 class="serif italic text-xl text-white">Espacio de Altar y Reflexión</h4>
+                    <p>La sombra no es algo "malo" que debas extirpar; es el conjunto de todas esas partes de ti que, en algún momento de tu historia, decidiste esconder, negar o rechazar para ser aceptada, para sobrevivir o para encajar en el molde que otros diseñaron para ti.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">Lo que rechazas, te somete</h4>
+                    <p>La sombra es como una pelota que intentas mantener bajo el agua con mucha fuerza: tarde o temprano, saltará hacia la superficie con una presión incontrolable. Se manifiesta en esos juicios feroces que lanzas hacia los demás (lo que te choca, te checa), en tus autosabotajes y en esos miedos que parecen no tener explicación.</p>
+                    <p>Cuando niegas tu sombra, estás fragmentando tu energía. Al decir "yo no soy eso", estás regalando una parte de tu poder vital. El regreso al origen no es convertirte en un ser de luz perfecto y "limpio", sino en un ser completo.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">La Sombra como Tesoro Oculto</h4>
+                    <p>Debajo de lo que consideras tu "oscuridad" —tu envidia, tu rabia, tu egoísmo o tu pereza— se esconden talentos dorados que no te has atrevido a reclamar. En tu rabia puede estar tu capacidad de poner límites; en tu envidia, el mapa de tus verdaderos deseos; en tu miedo, tu sensibilidad más profunda.</p>
+                    <p>Cuando dejas de pelear con tu sombra y la invitas a sentarse a la mesa, la guerra interna se detiene. Y es en ese silencio de la no-lucha donde tu vibración realmente se eleva.</p>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal IV: El Encuentro en el Espejo</h4>
+                        <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Esta frecuencia está diseñada para sostenerte mientras desciendes a tu profundidad, recordándote que estás a salvo.</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-4">
+                                <span class="text-2xl gold-text">1</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Espejo Externo:</strong> 
+                                    <span>Piensa en alguien que te genere una reacción visceral de rechazo. ¿Qué característica de esa persona te molesta profundamente? No la juzgues, solo obsérvala.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-2xl gold-text">2</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">La Pregunta de Integración:</strong> 
+                                    <span>Con honestidad brutal y amorosa, pregúntate: “¿En qué momento de mi vida yo tuve que esconder esa misma característica para ser amada? ¿Cómo me serviría integrar un poco de esa energía hoy?”.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-2xl gold-text">3</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">La Visualización del Abrazo:</strong> 
+                                    <span>Imagina a una versión de ti más joven, esa que se sintió "mala" o "inadecuada". Ábrele los brazos y dile: "Ahora yo soy lo suficientemente grande para amarte con todo lo que eres. Ya no tienes que esconderte más".</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-12 p-8 bg-slate-950/80 rounded-2xl border border-gold/30 text-center">
+                            <h5 class="serif gold-text text-xl mb-4 uppercase tracking-widest">El Decreto de Totalidad</h5>
+                            <p class="italic text-slate-100 text-lg leading-relaxed">
+                                "Dejo de dividirme. Reconozco mi luz y abrazo mi sombra. Reclamo cada parte de mi historia y cada fragmento de mi ser. Hoy elijo ser completa en lugar de perfecta. Soy la danza de la luz y la oscuridad en perfecta armonía."
+                            </p>
                         </div>
-                        <span id="status-cap4" data-status-id="cap4" class="text-xs text-slate-500 font-bold uppercase tracking-widest">Sincronizado</span>
                     </div>
-                    <textarea 
-                        data-note-id="cap4" 
-                        class="note-input w-full h-40 bg-slate-950/80 border border-white/10 rounded-2xl p-6 text-slate-200 text-sm focus:border-[#D4AF37] transition-all resize-none custom-scrollbar"
-                        placeholder="¿Qué situación estás listo para dejar de controlar hoy? Escríbela y siente el espacio libre en tu corazón."></textarea>
-                </div>
-            </div>
-        </section>
 
-        <!-- CAPÍTULO V: RECONOCER EL ORIGEN -->
-        <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
-            <div class="max-w-3xl mx-auto space-y-12">
-                <div class="text-center space-y-4">
-                    <span class="serif italic text-lg md:text-2xl gold-text">Capítulo V</span>
-                    <h2 class="serif text-4xl md:text-6xl font-bold tracking-wide">Reconocer el Origen</h2>
-                    <div class="h-[1px] w-24 bg-[#D4AF37] mx-auto mt-6"></div>
-                </div>
-
-                <div class="full-text-content">
-                    <p>
-                        Has completado un círculo sagrado. El regreso al origen no implica viajar al pasado, ni volver a la infancia física, ni recluirte en una cueva lejos del mundo moderno. El origen es el estado de inocencia primordial, de completitud y de paz interior con el que naciste antes de que el entorno te programara con sus miedos, sus culpas y sus ambiciones de rendimiento constante.
-                    </p>
-                    <p class="italic text-[#D4AF37] text-center my-12 font-light text-xl md:text-2xl px-6">
-                        "No viniste a esta Tierra a aprender nada nuevo. Viniste a recordar el amor y la completitud de la que fuiste creado."
-                    </p>
-                    <p>
-                        Cuando reconoces el origen en ti, te das cuenta de que nunca estuviste separado de la Fuente. La sensación de abandono, de insatisfacción constante y de búsqueda de validación externa eran solo ilusiones ópticas creadas por tu mente cansada. Siempre has sido suficiente, siempre has estado a salvo, siempre has sido profundamente amado por la inteligencia que sostiene las estrellas en el firmamento.
-                    </p>
-                    <p>
-                        Ahora, al cerrar este portal de lectura, lleva este estado de presencia y entrega a tu vida cotidiana. No dejes que la prisa de la ciudad apague el fuego de tu altar interior. Eres el camino de regreso al origen, eres el puente entre el cielo y la tierra. Camina con la cabeza alta y el corazón abierto, sabiendo que no tienes nada que demostrar y que el universo entero se regocija con tu simple existencia.
-                    </p>
-                </div>
-
-                <!-- Bloque de Notas Privadas del Lector -->
-                <div class="mt-16 pt-12 border-t border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <i data-lucide="pen-tool" class="text-[#D4AF37] w-5 h-5"></i>
-                            <h4 class="serif italic text-xl text-white">Espacio de Altar y Reflexión</h4>
+                    <div class="space-y-8">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración</h4>
+                        <div class="space-y-4">
+                            <p class="italic text-slate-400">Escribe tres características que siempre has intentado ocultar de ti misma.</p>
+                            <p class="italic text-slate-400">¿Qué "regalo" crees que hay escondido detrás de tu mayor defecto?</p>
+                            <textarea data-note-id="portal4-notes" class="reflection-area note-input" placeholder="Registra tu encuentro con la sombra aquí..."></textarea>
+                            <div class="save-status" data-status-id="portal4-notes"></div>
                         </div>
-                        <span id="status-cap5" data-status-id="cap5" class="text-xs text-slate-500 font-bold uppercase tracking-widest">Sincronizado</span>
                     </div>
-                    <textarea 
-                        data-note-id="cap5" 
-                        class="note-input w-full h-40 bg-slate-950/80 border border-white/10 rounded-2xl p-6 text-slate-200 text-sm focus:border-[#D4AF37] transition-all resize-none custom-scrollbar"
-                        placeholder="Para cerrar el portal: ¿Cuál es el mayor compromiso de amor y descanso que asumes hoy contigo mismo?"></textarea>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SECCIÓN DE DESPEDIDA -->
-        <div class="text-center space-y-6 pt-20">
-            <p class="handwriting text-5xl md:text-6xl">Gracias por habitar tu Origen</p>
-            <p class="serif italic text-sm md:text-lg text-slate-400 tracking-widest uppercase">Kari González — Conexión Cristal</p>
-            <div class="w-16 h-[1px] bg-gold/30 mx-auto mt-8"></div>
-        </div>
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal5">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">05</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal V</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Silencio Vivo: <span class="italic font-light block md:inline text-slate-400">Donde la mente finalmente se rinde</span></h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1WCHeeueOIRgi2Car7E_yUSfDE3lYCPNv/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal V
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-    </main>
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal5-el-silencio.jpg?v=1776651648')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-slate-700/30 to-gold/15 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-700 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal5-el-silencio.jpg?v=1776651648" alt="Portal V - El Silencio" class="w-full h-auto block" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 py-12 text-center text-xs text-slate-500 space-y-2">
-        <p>© 2026 Conexión Cristal. Todos los derechos reservados.</p>
-        <p class="italic">Diseñado con devoción para la lectura inmersiva del alma.</p>
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Han caminado a través de tu biología, tu historia y tus profundidades. Ahora, el camino te invita a algo que a la personalidad le aterra: la quietud absoluta.</p>
+                    <p>Solemos creer que el silencio es "vacío", una ausencia de sonido o de información. Pero en el camino de regreso al origen, descubrimos que el silencio no es un vacío, sino una <strong>Plenitud</strong>. Es el espacio sagrado donde la Verdad ya no necesita ser explicada, solo presenciada. Es el lenguaje original de la Fuente.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">La Rendición del Gran Narrador</h4>
+                    <p>Tu mente es una herramienta maravillosa, pero es una pésima maestra. Se ha pasado la vida intentando etiquetar, juzgar y controlar tu realidad para mantenerte "a salvo". En este portal, le pedimos a la mente que descanse. Le damos permiso para no saber, para no planificar y para no entender.</p>
+                    <p>Rendir la mente no es dejar de pensar; es dejar de creerle a los pensamientos. Es convertirte en el Observador Silencioso que mira pasar las nubes del pensamiento sin identificarse con ellas. Cuando el ruido mental se aquieta, lo que emerge no es la nada, es la Certeza.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">El Sonido que nace del Silencio</h4>
+                    <p>Como experta en vibración, sabes que la música más poderosa es la que ocurre entre las notas. Sin el silencio que la precede y la sigue, la música sería solo ruido.</p>
+                    <p>El silencio es la frecuencia donde tu supraconsciencia finalmente puede ser escuchada.</p>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal V: La Inmersión en la Quietud</h4>
+                        <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Este audio contiene espacios de silencio profundo entrelazados con frecuencias que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">1.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">Observa el ruido:</strong> 
+                                    <span>Cierra los ojos. No intentes callar tu mente; eso solo genera más lucha. Simplemente observa tus pensamientos como si fueran autos pasando por una carretera. Tú eres quien mira, no el auto.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">2.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">Escucha el espacio entre sonidos:</strong> 
+                                    <span>En el audio, presta atención no solo a la nota, sino al momento en que la nota se desvanece. Habita ese "entremedio".</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">3.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">La pregunta del Ser:</strong> 
+                                    <span>En medio del silencio, lanza esta pregunta al vacío y no busques la respuesta con la mente; deja que la respuesta sea una sensación: “¿Quién soy yo cuando no me cuento ninguna historia sobre mí?”.</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-12 p-8 bg-slate-950/80 rounded-2xl border border-gold/30 text-center">
+                            <h5 class="serif gold-text text-xl mb-4 uppercase tracking-widest">El Decreto de Rendición</h5>
+                            <p class="italic text-slate-100 text-lg leading-relaxed">
+                                "Suelto la necesidad de entender. Rindo mi mente al corazón. En el silencio de mi ser, me encuentro con el Origen. No necesito buscar nada, porque ya soy todo lo que es. Aquí, simplemente SOY."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración</h4>
+                        <div class="space-y-4">
+                            <p class="italic text-slate-400">¿Qué es lo que más te asusta de quedarte en silencio total contigo misma?</p>
+                            <p class="italic text-slate-400">Describe la sensación que quedó en tu cuerpo cuando la música del audio se detuvo.</p>
+                            <textarea data-note-id="portal5-notes" class="reflection-area note-input" placeholder="Escribe tu verdad aquí..."></textarea>
+                            <div class="save-status" data-status-id="portal5-notes"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal6">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">06</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal VI</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Canal de Coherencia: <span class="italic font-light block md:inline text-slate-400">Alineando pensamiento, sentimiento y palabra</span></h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1Hg1wEttCcsT2qtJpJIwfAhsdOW7jQ27-/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal VI
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal6-la-coherencia-libro-el-camino-de-regreso-al-origen.jpg?v=1776651909')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-gold/15 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-700 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal6-la-coherencia-libro-el-camino-de-regreso-al-origen.jpg?v=1776651909" alt="Portal VI - La Coherencia" class="w-full h-auto block" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Después de haber habitado el Silencio Vivo, surge una pregunta inevitable: ¿Qué es lo que ahora, desde esta nueva profundidad, quiere expresarse a través de mí?</p>
+                    <p>El Portal 6 es el espacio de la congruencia sagrada. La mayoría de los seres humanos viven en una guerra interna constante: piensan una cosa, sienten otra y terminan haciendo o diciendo algo totalmente distinto. Esta falta de alineación es la mayor fuga de energía vital que existe. Cuando tu pensamiento, tu emoción y tu acción no caminan en la misma dirección, tu frecuencia se debilita y tu realidad se vuelve confusa.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">La Voz como Instrumento de Verdad</h4>
+                    <p>Tu garganta es el puente entre tu corazón y tu mente. Es el canal por donde tu mundo interno se manifiesta en el mundo externo. Ser coherente no significa ser perfecta; significa ser íntegra. Es tener la valentía de sostener tu verdad, incluso cuando tu entorno espera otra nota de ti.</p>
+                    <p>Cuando activa tu Canal de Coherencia, dejas de "buscar" tu propósito y empiezas a ser el propósito. Tu palabra recupera su poder creativo (el Verbo), y tus acciones dejan de ser reacciones al miedo para convertirse en respuestas a tu esencia.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">Siente. Hace. Organiza.</h4>
+                    <p>Como hemos visto en el mapa de la nueva consciencia, el orden ha cambiado. El viejo paradigma nos decía: Sueña, Planifica, Hace. Pero la coherencia de la nueva humanidad sigue una secuencia distinta:</p>
+                    <ul class="space-y-2 ml-4">
+                        <li><strong class="text-white">SIENTE:</strong> Sintoniza con la instrucción de tu alma en el silencio.</li>
+                        <li><strong class="text-white">HACE:</strong> Actúa desde esa sintonía, sin esperar a tener toda la información.</li>
+                        <li><strong class="text-white">ORGANIZA:</strong> Establece el cauce para ese nuevo caudal de energía que ya está en movimiento.</li>
+                    </ul>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal VI: La Afinación del Canal</h4>
+                        <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Ríndete a los sonidos..</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">1.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Pulso de la Verdad:</strong> 
+                                    <span>Coloca una mano en tu corazón y otra en tu garganta. Respira profundamente y siente la conexión entre ambos centros.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">2.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">Identifica la Fricción:</strong> 
+                                    <span>Busca una situación en tu vida actual donde sientas que no estás siendo coherente. ¿Qué es lo que estás callando? ¿Qué es lo que estás haciendo por compromiso y no por deseo? Siente la "fricción" o el cansancio que eso genera en tu cuerpo.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">3.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Sonido de la Liberación:</strong> 
+                                    <span>Utiliza tu propia voz. Emite un sonido grave y constante (como un "Mmm" o un "Ah") mientras visualizas que cualquier nudo en tu garganta se disuelve. Deja que tu propia vibración limpie tu canal.</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-12 p-8 bg-slate-950/80 rounded-2xl border border-gold/30 text-center">
+                            <h5 class="serif gold-text text-xl mb-4 uppercase tracking-widest">El Decreto de Coherencia</h5>
+                            <p class="italic text-slate-100 text-lg leading-relaxed">
+                                "Renuncio a la división interna. Alineo mi pensar, mi sentir y mi decir con la sabiduría de mi origen. Mi palabra es ley, mi acción es amor y mi presencia es verdad. Soy un canal limpio para la vida."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración</h4>
+                        <div class="space-y-4">
+                            <p class="italic text-slate-400">¿En qué área de tu vida sientes que tu "hacer" no coincide con tu "sentir"?</p>
+                            <p class="italic text-slate-400">Escribe una verdad que hoy estés lista para expresar, aunque te tiemble la voz.</p>
+                            <textarea data-note-id="portal6-notes" id="portal6-notes" class="reflection-area note-input" placeholder="Escribe aquí..."></textarea>
+                            <div class="save-status" data-status-id="portal6-notes"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal7">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">07</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal VII</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">La Integración: <span class="italic font-light block md:inline text-slate-400">El Regreso al Origen como un ser completo</span></h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1qrm4S23IumLrw4NuzZvU7hzOR9DCvlIg/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal VII
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal7-la-integracion-libro-el-camino-de-regreso-al-origen.jpg?v=1776652374')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/10 to-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-700 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02] hover:border-gold/50">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal7-la-integracion-libro-el-camino-de-regreso-al-origen.jpg?v=1776652374" alt="Portal VII - La Integración" class="w-full h-auto block" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Has cruzado el llamado, purificado tu templo, honrado tu sangre, abrazado tu sombra, rendido tu mente y afinado tu canal. Ahora, llegamos al portal más místico y, a la vez, más terrenal: El Regreso.</p>
+                    <p>El regreso no es volver a quien eras antes de empezar este viaje. Es el retorno a la esencia pura que siempre fuiste, pero que ahora habitas con total consciencia. Es el descenso definitivo del Espíritu en la Materia. Ya no buscas el cielo fuera de ti; has comprendido que el cielo es un estado de frecuencia que tú sostienes mientras caminas por la tierra.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">El Estado de Presencia Cristalina</h4>
+                    <p>Integrar es unir lo que estaba fragmentado. Es dejar de separar lo humano de lo divino, lo mundano de lo sagrado. En este estado de Presencia Cristalina, ya no hay esfuerzo. No necesitas "hacer" para ser espiritual; tu sola presencia, tu respiración y tu mirada ya están emitiendo la nota de la Fuente.</p>
+                    <p>Este es el punto donde la "Nueva Humanidad" se vuelve real. Ser un ser integrado significa que puedes lavar los platos, liderar una empresa o abrazar a un hijo desde el mismo centro de paz que encontraste en el silencio. La verdadera maestría no ocurre en la cima de una montaña, sino en medio del caos del mundo, permaneciendo fiel a tu propia vibración.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">El Puente entre Dimensiones</h4>
+                    <p>A partir de ahora, te conviertes en un ancla de luz. Tu cuerpo, ya limpio de parásitos, de ruidos y de lealtades ciegas, funciona como un puente. Recibes las instrucciones de tu Supraconsciencia y las traduces en acciones coherentes en la materia.</p>
+                    <p>Recuerda: <strong>Siente. Hace. Organiza.</strong> Ese es tu nuevo ritmo. Ya no planificas desde el miedo, sino que fluyes desde la intuición disruptiva. Estás acoplada a tu versión futura, y esa versión ya está aquí, respirando en tu pecho.</p>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal VII: La Consagración del Ser</h4>
+                        <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Esta frecuencia de integración está diseñada para sellar tu campo electromagnético y expandir tu aura.</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">1.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">Siente la Unión:</strong> 
+                                    <span>Cierra los ojos y siente cómo la energía fluye desde la base de tu columna (Tierra) hasta la coronilla (Cielo) y se expande desde tu corazón hacia el infinito.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">2.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">Visualiza el Regreso:</strong> 
+                                    <span>Mírate caminando en tu vida cotidiana. Mira cómo te mueves, cómo hablas y cómo reaccionas ante los desafíos. Observa la paz que emanas incluso en medio del movimiento.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">3.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Sello de la Maestría:</strong> 
+                                    <span>Coloca tu mano derecha en el plexo solar y la izquierda en el corazón. Siente el calor de tu propio poder integrado.</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-12 p-8 bg-slate-950/80 rounded-2xl border border-gold/30 text-center">
+                            <h5 class="serif gold-text text-xl mb-4 uppercase tracking-widest">El Decreto Final del Regreso</h5>
+                            <p class="italic text-slate-100 text-lg leading-relaxed">
+                                "He regresado a casa, y mi casa soy yo. Reconozco mi divinidad encarnada en mi humanidad. Soy el puente, soy la luz y soy la materia. Elijo vivir en coherencia, amar sin división y crear desde mi origen. Yo Soy el que Yo Soy, aquí y ahora."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración Final</h4>
+                        <div class="space-y-4">
+                            <p class="italic text-slate-400">¿Quién eres hoy, después de haber atravesado los 7 portales?</p>
+                            <p class="italic text-slate-400">¿Cuál es el compromiso sagrado que haces contigo misma para sostener tu frecuencia en el día a día?</p>
+                            <textarea data-note-id="portal7-notes" id="portal7-notes" class="reflection-area note-input" placeholder="Escribe tu integración final aquí..."></textarea>
+                            <div class="save-status" data-status-id="portal7-notes"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal33">
+                <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">33</div>
+                <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal 33</h2>
+                <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">La Maestría Encarnada: <span class="italic font-light block md:inline text-slate-400">La Muerte Amorosa del Observador y el Código de la Ascensión</span></h3>
+                
+                <div class="my-10">
+                    <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
+                                    <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" alt="[Auriculares]" class="w-12 h-12 object-contain brightness-125 contrast-110">
+                                </div>
+                            </div>
+                            <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
+                            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
+                                <i data-lucide="info" class="gold-text w-4 h-4"></i>
+                                <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1xjbAosvsS7sB3pCduTwxbpU11xn95XSx/view?usp=drive_link" target="_blank" class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i> Portal 33
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-20 flex justify-center px-4">
+                    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal33-el-maestria-origen-libro-el-camino-de-regreso-al-origen.jpg?v=1776652854')">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-white/10 to-gold/25 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 pointer-events-none"></div>
+                        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/40 shadow-[0_0_50px_rgba(212,175,55,0.15)] transition-transform duration-700 hover:scale-[1.02] hover:border-gold/60">
+                            <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal33-el-maestria-origen-libro-el-camino-de-regreso-al-origen.jpg?v=1776652854" alt="Portal 33 - La Maestría Encarnada" class="w-full h-auto block" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>Si has llegado hasta aquí, has atravesado el desierto de la personalidad para reencontrarte con la inmensidad de tu Ser. Pero cruzar este umbral requiere un último acto de entrega, el más sutil y profundo de todos: la muerte amorosa del Observador.</p>
+                    <p>Durante mucho tiempo aprendiste a ser ese Observador. Aprendiste a mirar tus emociones sin identificarte, a comprender tus heridas y a narrar tu historia con un lenguaje espiritual. Ese Observador fue necesario; fue medicina, fue refugio y fue tu conciencia naciente. Pero aquí, en el Portal 33, el mapa se borra porque el camino ya no está afuera.</p>
+                    <p>El 33 es el número de la maestría, pero no de una maestría que se alcanza con el esfuerzo del ego, sino de aquella que se revela cuando la distancia entre tú y la vida finalmente cae.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">Del Personaje Espiritual a la Esencia Solar</h4>
+                    <p>Tal vez, sin darte cuenta, intentaste ser Cuerpo de Luz antes de terminar de ser carne. Intentaste sublimar una esencia que aún estaba descendiendo. Pero la grandeza auténtica no evita la humanidad. El personaje espiritual fue una etapa; el trauma sanado fue una etapa; el Observador fue una etapa.</p>
+                    <p>Más allá de ellos vive tu Esencia. Una esencia que no necesita explicación, que no cabe en ningún relato y que no puede reducirse a una mitología personal. Esta esencia hoy se enciende en el corredor cristalino de tu propio corazón como un fuego suave pero irrevocable. No viene a destruirte; viene a encarnarte.</p>
+                    <p>La Ascensión no es un viaje hacia las estrellas; es un descenso profundo hacia tu propia vida. Requiere cuerpo, requiere raíces y requiere latido. Requiere embarrarse, a sabiendas de que solo es barro y podemos bañarnos. No viniste a sobrevolar la existencia; viniste a habitarla.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">La Antena del Cielo: Tus 33 Escalones</h4>
+                    <p>Tu cuerpo físico no es un lastre, es una tecnología avanzada de comunicación estelar. Tu columna vertebral es la escalera por la que la consciencia desciende para poder manifestarse. Cada una de tus 33 vértebras es un resonador que guarda memorias, pero también potenciales de luz que ahora se integran en tu biología.</p>
+                    <p>Cuando recorres este portal, la energía ya no se queda atrapada in la supervivencia ni se desborda en el control. El flujo corre libre desde tu sacro hasta tu glándula pineal, encendiendo tu Cuerpo de Luz (Merkaba) mientras tus pies permanecen firmes en Gaia. Eres el punto de anclaje donde el cielo toca la tierra. La Unidad deja de ser una idea y se convierte en una experiencia viva en tu voz, en tu vínculo y en tu carne.</p>
+
+                    <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider text-center">El Estado de Gracia: "A Través de Mí"</h4>
+                    <p>En este umbral, el estado "A TRAVÉS DE MÍ" alcanza su máxima pureza. Es la resurrección de tu Luz original por encima de tus heridas. Ya no hay dudas, no hay planes, no hay autoconceptos. Solo existe un flujo ininterrumpido de vida.</p>
+                    <ul class="space-y-2 italic text-center text-white">
+                        <li>Ya no haces las cosas "por" los demás (desde la carencia).</li>
+                        <li>Ya no haces las cosas "para" conseguir algo (desde el ego).</li>
+                        <li>Haces porque eres el cauce de una voluntad mayor.</li>
+                    </ul>
+                    <p>Eres el Maestro del Ser Solar que se reconoce divinamente humano. Cruza este umbral con suavidad. No muere tu conciencia; muere la distancia. Has regresado al Origen, pero ahora traes contigo el tesoro de la experiencia humana integrada.</p>
+                    <p>Aún no te conoces completamente. Aún no nos conocemos como humanidad encarnada. Y eso no es una carencia; es la promesa de lo nuevo.</p>
+
+                    <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
+                        <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal 33: La Activación del Eje Diamante</h4>
+                        <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Busca un espacio de silencio absoluto. Escucha la frecuencia del Portal 33 (432 Hz).</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">1.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Enraizamiento de la Madre:</strong> 
+                                    <span>Visualiza raíces que salen de tus pies y tu coxis, entrando profundamente en el barro sagrado de Gaia. Siente el fuego rojo en la base; es la voluntad de existir.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">2.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Ascenso de la Conciencia:</strong> 
+                                    <span>Visualiza una luz blanca-dorada subiendo vértebra por vértebra. Siente cómo cada uno de los 33 escalones se ilumina, limpiando las memorias de separación. 1... 11... 22... hasta llegar al 33, en la base de tu cráneo.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">3.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">La Apertura de la Fontanela:</strong> 
+                                    <span>Siente cómo tu coronilla se abre y una lluvia de luz blanca fría baña cada una de tus células. Ya no hay bordes. Ya no hay límites. La carne y la luz son lo mismo.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold gold-text">4.</span>
+                                <div>
+                                    <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">El Sello de la Maestría:</strong> 
+                                    <span>Coloca tus manos en el corazón y siente el fuego suave de tu Esencia. Repite con voz firme pero amorosa el decreto.</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-12 p-8 bg-slate-950/80 rounded-2xl border border-gold/30 text-center">
+                            <p class="italic text-slate-100 text-lg leading-relaxed">
+                                "Yo Soy el que Yo Soy. Reconozco mi divinidad encarnada y mi poder soberano. Renuncio a la distancia y abrazo mi humanidad. Estoy listo para manifestar la música del Origen en la materia. Aquí y ahora, la Unidad es mi realidad."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <h4 class="serif text-2xl gold-text uppercase text-sm tracking-widest">Espacio de Integración</h4>
+                        <div class="space-y-4">
+                            <p class="italic text-slate-400">¿Qué parte de tu "personaje espiritual" estás lista para dejar morir hoy?</p>
+                            <p class="italic text-slate-400">Describe la sensación de libertad que sientes al saber que ya no tienes que observar tu vida, sino simplemente vivirla.</p>
+                            <textarea data-note-id="portal33-notes" id="portal33-notes" class="reflection-area note-input" placeholder="Escribe aquí..."></textarea>
+                            <div class="save-status" data-status-id="portal33-notes"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <article class="py-20 border-t border-white/10 space-y-12 full-text-content">
+                <h2 class="serif text-4xl md:text-6xl gold-text text-center uppercase tracking-widest">EL CIERRE: Tu música, tu mensaje</h2>
+                <div class="space-y-8 text-lg text-slate-300 leading-loose">
+                    <p>El viaje no termina aquí; en realidad, tu música apenas comienza a sonar. Has regresado al Origen no para quedarte allí, sino para encarnar ese cielo en la tierra en cada paso que des. Ya no busques las respuestas en estas páginas; búscalas en el latido de tu propio corazón, en el silencio de tus mañanas y en la coherencia de tus actos. Eres la medicina que el mundo estaba esperando.</p>
+                    <p>Ahora que el Observador ha muerto para dar paso al Ser, la maestría se demuestra en lo cotidiano: en cómo comes, cómo descansas, cómo hablas y cómo amas. No permitas que el ruido del mundo vuelva a silenciar tu frecuencia original. Tienes la tecnología, tienes los códigos y, sobre todo, ahora tienes las raíces. Sal ahí fuera y sé el mensaje. No te mueras con tu música dentro; el concierto de la vida reclama tu nota única. Es hora de brillar, no desde el esfuerzo, sino desde tu esencia.</p>
+                    <p>Camina lento, respira profundo y recuerda: la nueva humanidad ya vive en ti. Nos vemos en el pulso de lo eterno.</p>
+                    <p>Gracias por permitirme acompañarte hasta el umbral de tu propio ser. Escribir estas palabras ha sido mi forma de honrar mi propio regreso, y verte llegar hasta aquí es mi mayor alegría. Ahora te toca a ti habitar tu Portal 33 cada día. No eres un ser defectuoso intentando sanar; eres una divinidad recordando cómo ser humana. Honra tu cuerpo, bendice tu linaje y confía en tu sombra.</p>
+                    
+                    <div class="pt-12 text-center">
+                        <p class="serif text-3xl gold-text uppercase tracking-widest">Bienvenida el alma, bienvenido el ser. Bienvenido a casa. Bienvenida al Origen.</p>
+                        <p class="serif text-2xl mt-8">Con amor,<br><span class="text-4xl gold-text font-bold">Kari.</span></p>
+                    </div>
+                </div>
+            </article>
+
+        </div> </main>
+
+    <footer class="bg-slate-900 py-20 text-center text-slate-600 border-t border-white/5">
+        <p>© 2026 El Camino de Regreso al Origen. Kari González.</p>
     </footer>
-
+</div> <div id="lightbox" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-sm items-center justify-center p-4 md:p-10 transition-all duration-300" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/50 hover:text-gold text-4xl transition-colors">&times;</button>
+    <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl border border-white/10 object-contain" onclick="event.stopPropagation()" />
 </div>
 
-<script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDHqbyVu5GPS2MU-nFXgYqOm_dZcWZR2DQ",
-  authDomain: "regreso-al-origen.firebaseapp.com",
-  projectId: "regreso-al-origen",
-  storageBucket: "regreso-al-origen.firebasestorage.app",
-  messagingSenderId: "222308782579",
-  appId: "1:222308782579:web:3d5f83687b0dcfb1990286",
-  measurementId: "G-66KWMRDR7Y"
-};
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
-        let currentUser = null;
-        let saveTimeouts = {};
-
-        // Escuchar cambios de autenticación
-        onAuthStateChanged(auth, (user) => { 
-            if (user) { 
-                currentUser = user; 
-                // Mostrar contenido y ocultar portal de login
-                document.getElementById('auth-portal').classList.add('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-                syncNotes(); 
-            } else {
-                currentUser = null;
-                // Mostrar portal de login y ocultar contenido
-                document.getElementById('auth-portal').classList.remove('hidden');
-                document.getElementById('main-content').classList.add('hidden');
-            }
-        });
-
-        // Sincronización de Notas (Persistencia)
-        function syncNotes() {
-            if (!currentUser) return;
-            document.querySelectorAll('.note-input').forEach(textarea => {
-                const noteId = textarea.getAttribute('data-note-id');
-                const ref = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'notes', noteId);
-                
-                onSnapshot(ref, (snap) => {
-                    if (snap.exists() && document.activeElement !== textarea) {
-                        textarea.value = snap.data().content || '';
-                    }
-                });
-
-                textarea.addEventListener('input', (e) => {
-                    const status = document.querySelector(`[data-status-id="${noteId}"]`);
-                    if (status) status.innerText = "Guardando...";
-
-                    clearTimeout(saveTimeouts[noteId]);
-                    saveTimeouts[noteId] = setTimeout(async () => {
-                        try {
-                            await setDoc(ref, { content: e.target.value, updated: new Date() }, { merge: true });
-                            if (status) status.innerText = "✓ Sincronizado";
-                        } catch (err) {
-                            if (status) status.innerText = "⚠ Error";
-                        }
-                    }, 1200);
-                });
-            });
+<script>
+    function openLightbox(url) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        if (lightbox && img) {
+            img.src = url;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
+    }
 
-        // Registrar funciones de Autenticación en window para poder llamarlas desde los botones HTML tradicionales
-        window.switchAuthTab = function(tab) {
-            const btnLogin = document.getElementById('tab-login');
-            const btnRegister = document.getElementById('tab-register');
-            const formLogin = document.getElementById('form-login');
-            const formRegister = document.getElementById('form-register');
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    }
 
-            if (tab === 'login') {
-                btnLogin.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all uppercase tracking-widest text-[11px]";
-                btnRegister.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold uppercase tracking-widest text-[11px]";
-                formLogin.classList.remove('hidden');
-                formRegister.classList.add('hidden');
-            } else {
-                btnLogin.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold uppercase tracking-widest text-[11px]";
-                btnRegister.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all uppercase tracking-widest text-[11px]";
-                formLogin.classList.add('hidden');
-                formRegister.classList.remove('hidden');
-            }
-        };
-
-        window.handleAuthSubmit = async function(event, type) {
-            event.preventDefault();
-            const loginError = document.getElementById('login-error');
-            const regError = document.getElementById('reg-error');
-            
-            if (loginError) loginError.classList.add('hidden');
-            if (regError) regError.classList.add('hidden');
-
-            if (type === 'login') {
-                const email = document.getElementById('login-email').value.trim();
-                const password = document.getElementById('login-password').value;
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-                
-                try {
-                    submitBtn.innerText = "Ingresando...";
-                    submitBtn.disabled = true;
-                    await signInWithEmailAndPassword(auth, email, password);
-                } catch (error) {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    if (loginError) {
-                        loginError.innerText = "Credenciales incorrectas o usuario no registrado.";
-                        loginError.classList.remove('hidden');
-                    }
-                }
-            } else if (type === 'register') {
-                const email = document.getElementById('reg-email').value.trim();
-                const password = document.getElementById('reg-password').value;
-                const key = document.getElementById('reg-key').value.trim();
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-
-                // Validación de Clave Secreta de Activación VIP
-                if (key !== "ORIGEN2026") {
-                    if (regError) {
-                        regError.innerText = "La Clave de Activación es incorrecta. Revisa tu email de compra.";
-                        regError.classList.remove('hidden');
-                    }
-                    return;
-                }
-
-                if (password.length < 6) {
-                    if (regError) {
-                        regError.innerText = "La contraseña debe tener al menos 6 caracteres.";
-                        regError.classList.remove('hidden');
-                    }
-                    return;
-                }
-
-                try {
-                    submitBtn.innerText = "Activando Acceso...";
-                    submitBtn.disabled = true;
-                    await createUserWithEmailAndPassword(auth, email, password);
-                } catch (error) {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    if (regError) {
-                        let msg = "Error al crear la cuenta. Intente con otro correo.";
-                        if (error.code === 'auth/email-already-in-use') {
-                            msg = "Este correo electrónico ya está registrado. Inicie sesión.";
-                        } else if (error.code === 'auth/invalid-email') {
-                            msg = "Formato de correo inválido.";
-                        }
-                        regError.innerText = msg;
-                        regError.classList.remove('hidden');
-                    }
-                }
-            }
-        };
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
 </script>
 
-    <!-- Inicializar Iconos de Lucide -->
-    <script>
-        lucide.createIcons();
-    </script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    <!-- SCRIPT GLOBAL PARA DESCARGAS DIRECTAS DESDE GOOGLE DRIVE -->
-    <script>
-        function descargarDesdeDrive(tipo) {
-            const urlBase = "https://drive.google.com/uc?export=download&id=";
-            let idArchivo = "";
+    const firebaseConfig = {
+        apiKey: "AIzaSyDHqbyVu5GPS2MU-nFXgYqOm_dZcWZR2DQ",
+        authDomain: "regreso-al-origen.firebaseapp.com",
+        projectId: "regreso-al-origen",
+        storageBucket: "regreso-al-origen.firebasestorage.app",
+        messagingSenderId: "222308782579",
+        appId: "1:222308782579:web:3d5f83687b0dcfb1990286",
+        measurementId: "G-66KWMRDR7Y"
+    };
 
-            switch(tipo) {
-                case 'ebook_impresion':
-                    idArchivo = "TU_ID_DE_DRIVE_DEL_PDF_IMPRESION"; // <-- Reemplazá por tu ID real
-                    break;
-                case 'audio': 
-                    idArchivo = "1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM"; // Tu ID real de audiolibro
-                    break;
-                case 'guia': 
-                    idArchivo = "1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP"; // Tu ID real de frecuencias
-                    break;
-                default:
-                    console.error("Tipo de archivo no reconocido");
-                    return;
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    let currentUser = null;
+    let saveTimeouts = {};
+
+    onAuthStateChanged(auth, (user) => { 
+        if (user) { 
+            currentUser = user; 
+            if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.add('hidden');
+            if(document.getElementById('main-content')) document.getElementById('main-content').classList.remove('hidden');
+            syncNotes(); 
+        } else {
+            currentUser = null;
+            if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.remove('hidden');
+            if(document.getElementById('main-content')) document.getElementById('main-content').classList.add('hidden');
+        }
+    });
+
+    window.switchAuthTab = function(tab) {
+        const btnLogin = document.getElementById('tab-login');
+        const btnRegister = document.getElementById('tab-register');
+        const formLogin = document.getElementById('form-login');
+        const formRegister = document.getElementById('form-register');
+
+        if (tab === 'login') {
+            btnLogin.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
+            btnRegister.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
+            formLogin.classList.remove('hidden');
+            formRegister.classList.add('hidden');
+        } else {
+            btnLogin.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
+            btnRegister.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
+            formLogin.classList.add('hidden');
+            formRegister.classList.remove('hidden');
+        }
+    };
+
+    window.handleAuthSubmit = async function(event, type) {
+        event.preventDefault();
+        const loginError = document.getElementById('login-error');
+        const regError = document.getElementById('reg-error');
+        
+        if (loginError) loginError.classList.add('hidden');
+        if (regError) regError.classList.add('hidden');
+
+        if (type === 'login') {
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            
+            try {
+                submitBtn.innerText = "Ingresando...";
+                submitBtn.disabled = true;
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                if (loginError) {
+                    loginError.innerText = "Credenciales incorrectas o usuario no registrado.";
+                    loginError.classList.remove('hidden');
+                }
+            }
+        } else if (type === 'register') {
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const key = document.getElementById('reg-key').value.trim();
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+
+            if (key !== "ORIGEN2026") {
+                if (regError) {
+                    regError.innerText = "La Clave de Activación es incorrecta. Revisa tu email de compra.";
+                    regError.classList.remove('hidden');
+                }
+                return;
             }
 
-            if (idArchivo !== "" && idArchivo !== "TU_ID_DE_DRIVE_DEL_PDF_IMPRESION") {
-                window.open(urlBase + idArchivo, '_blank', 'noopener,noreferrer');
-            } else {
-                alert("El archivo se está preparando o requiere configuración de ID en el código.");
+            if (password.length < 6) {
+                if (regError) {
+                    regError.innerText = "La contraseña debe tener al menos 6 caracteres.";
+                    regError.classList.remove('hidden');
+                }
+                return;
+            }
+
+            try {
+                submitBtn.innerText = "Activando Acceso...";
+                submitBtn.disabled = true;
+                await createUserWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                if (regError) {
+                    let msg = "Error al crear la cuenta. Intente con otro correo.";
+                    if (error.code === 'auth/email-already-in-use') {
+                        msg = "Este correo electrónico ya está registrado. Inicie sesión.";
+                    } else if (error.code === 'auth/invalid-email') {
+                        msg = "Formato de correo inválido.";
+                    }
+                    regError.innerText = msg;
+                    regError.classList.remove('hidden');
+                }
             }
         }
-    </script>
+    };
+
+    function syncNotes() {
+        if (!currentUser) return;
+        document.querySelectorAll('.note-input').forEach(textarea => {
+            const noteId = textarea.getAttribute('data-note-id');
+            const ref = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'notes', noteId);
+            
+            onSnapshot(ref, (snap) => {
+                if (snap.exists() && document.activeElement !== textarea) {
+                    textarea.value = snap.data().content || '';
+                }
+            });
+
+            textarea.addEventListener('input', (e) => {
+                const status = document.querySelector(`[data-status-id="${noteId}"]`);
+                if (status) status.innerText = "Guardando...";
+
+                clearTimeout(saveTimeouts[noteId]);
+                saveTimeouts[noteId] = setTimeout(async () => {
+                    try {
+                        await setDoc(ref, { content: e.target.value, updated: new Date() }, { merge: true });
+                        if (status) status.innerText = "✓ Sincronizado";
+                    } catch (err) {
+                        if (status) status.innerText = "⚠ Error";
+                    }
+                }, 1200);
+            });
+        });
+    }
+</script>
+
+<script>
+    function descargarDesdeDrive(tipo) {
+        let urlBase = "https://drive.google.com/file/d/";
+        let urlFin = "/view?usp=sharing";
+        let idArchivo = "";
+
+        switch(tipo) {
+            case 'ebook_impresion':
+                idArchivo = "1r1rBzJN8vm3TbOipu04hTZny70wsA48c"; 
+                break;
+            case 'audio': 
+                idArchivo = "1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM"; 
+                break;
+            case 'guia': 
+                idArchivo = "1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP"; 
+                break;
+            default:
+                console.error("Tipo de archivo no reconocido");
+                return;
+        }
+
+        if (idArchivo !== "" && idArchivo !== "TU_ID_DE_DRIVE_DEL_PDF_IMPRESION") {
+            window.open(urlBase + idArchivo + urlFin, '_blank', 'noopener,noreferrer');
+        } else {
+            alert("El archivo se está preparando o requiere configuración de ID en el código.");
+        }
+    }
+</script>
 </body>
 </html>
