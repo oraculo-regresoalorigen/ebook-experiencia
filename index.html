@@ -8,53 +8,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
         body {
-background-color: #050517;
-color: #f5f0e8;
-font-family: 'Inter', sans-serif;
-background-image: 
-    radial-gradient(circle at 0% 0%, rgba(11, 11, 46, 1) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(26, 26, 62, 1) 0%, transparent 50%);
-background-attachment: fixed;
-}
+            background-color: #050517;
+            color: #f5f0e8;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(11, 11, 46, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(26, 26, 62, 1) 0%, transparent 50%);
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
 
-.glass-panel {
-background: rgba(26, 26, 62, 0.4);
-backdrop-filter: blur(16px);
-border: 1px solid rgba(212, 175, 55, 0.15);
-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-}
+        .glass-panel {
+            background: rgba(26, 26, 62, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
 
-.chart-container {
-position: relative;
-width: 100%;
-max-width: 700px;
-margin-left: auto;
-margin-right: auto;
-height: 350px;
-max-height: 400px;
-}
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
 
-.gold-gradient-text {
-background: linear-gradient(to right, #d4af37, #f5f0e8, #d4af37);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
+        .gold-gradient-text {
+            background: linear-gradient(to right, #d4af37, #f5f0e8, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.resource-card {
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        .resource-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.resource-card:hover {
-border-color: rgba(212, 175, 55, 0.5);
-transform: translateY(-5px);
-background: rgba(26, 26, 62, 0.6);
-}
+        .resource-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+            background: rgba(26, 26, 62, 0.6);
+        }
 
-/* Scrollbar styling */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #050517; }
-::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
-        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; scroll-behavior: smooth; }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050517; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        
         .serif { font-family: 'Playfair Display', serif; }
         .handwriting { font-family: 'Dancing Script', cursive; color: #D4AF37; }
         .gold-text { color: #D4AF37; }
@@ -85,12 +86,10 @@ background: rgba(26, 26, 62, 0.6);
         .full-text-content { line-height: 1.8; color: #cbd5e1; }
         .full-text-content p { margin-bottom: 1.5rem; }
         .full-text-content strong { color: #f8fafc; font-weight: 600; }
-        
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-<!-- Navegación Fija con Accesos Directos -->
 <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/95 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-0 md:h-20 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
         
@@ -131,7 +130,6 @@ background: rgba(26, 26, 62, 0.6);
 </nav>
 <div class="h-20"></div>
 
-<!-- Importante: Añadir este espaciador justo después de cerrar el </nav> para que el contenido no quede oculto bajo la barra -->
 <div class="h-20"></div>
 
 <div id="auth-portal" class="min-h-screen flex flex-col items-center justify-center relative px-4 py-12 gradient-bg text-center">
@@ -179,10 +177,10 @@ background: rgba(26, 26, 62, 0.6);
         </form>
     </div>
 </div>
+
 <div id="main-content" class="hidden">
 <main class="max-w-6xl mx-auto px-6 py-12">
 
-<!-- SECCIÓN 1: INTRODUCCIÓN Y CONTEXTO -->
 <section id="welcome" class="mb-20 text-center">
 <div class="inline-block px-4 py-1 rounded-full border border-mystic-gold/20 bg-mystic-gold/5 text-mystic-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-8">
 Dashboard de Miembros
@@ -193,7 +191,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 </p>
 </section>
 
-<!-- SECCIÓN 3: MÓDULOS DE RECURSOS -->
 <section id="resources" class="mb-32">
 <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
 <h2 class="font-playfair text-4xl font-bold text-mystic-gold">Dimensiones del Ser</h2>
@@ -202,7 +199,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
-<!-- Tarjeta 1: EBOOK INTERACTIVO -->
 <div class="resource-card glass-panel p-8 rounded-3xl border-mystic-gold/30 bg-mystic-gold/5 flex flex-col justify-between h-80">
 <div>
 <div class="w-12 h-12 bg-mystic-gold/20 rounded-2xl flex items-center justify-center mb-6">
@@ -214,7 +210,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 <a href="#inicio-libro" class="w-full py-4 rounded-xl bg-mystic-gold text-mystic-dark font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white transition-all">Abrir Lectura</a>
 </div>
 
-<!-- Tarjeta 2: EBOOK IMPRESIÓN -->
 <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
 <div>
 <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
@@ -226,7 +221,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 <a href="https://drive.google.com/file/d/1r1rBzJN8vm3TbOipu04hTZny70wsA48c/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir en Pantalla Completa</a>
 </div>
 
-<!-- Tarjeta 3: AUDIOLIBRO -->
 <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
 <div>
 <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
@@ -238,7 +232,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 <a href="https://drive.google.com/file/d/1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir Guía de Audios</a>
 </div>
 
-<!-- Tarjeta 4: GUÍA BINAURAL -->
 <div class="resource-card glass-panel p-8 rounded-3xl flex flex-col justify-between h-80">
 <div>
 <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6">
@@ -249,7 +242,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 </div>
 <a href="https://drive.google.com/file/d/1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-xl border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest text-center hover:bg-white/10 transition-all">Abrir Guía de Frecuencias</a>
 </div>
-<!-- Tarjeta 6: ORÁCULO DIGITAL -->
 <div class="resource-card glass-panel p-8 rounded-3xl border-purple-500/30 bg-mystic-purple/5 flex flex-col justify-between h-80">
 <div>
 <div class="w-12 h-12 bg-mystic-purple/20 rounded-2xl flex items-center justify-center mb-6">
@@ -263,11 +255,7 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
 
 </div>
 </section>
-
-</main>
-
-    <!-- Hero -->
-<section id="inicio-libro" class="min-h-[auto] md:min-h-screen flex items-center justify-center relative pt-24 pb-12 md:pt-20 px-6 gradient-bg text-center">
+    <section id="inicio-libro" class="min-h-[auto] md:min-h-screen flex items-center justify-center relative pt-24 pb-12 md:pt-20 px-6 gradient-bg text-center">
     <div class="max-w-4xl relative z-10 fade-in">
         <h2 class="serif italic text-xl md:text-3xl gold-text mb-6 tracking-widest">Autora <a href="https://conexioncristal.com/" target="_blank" class="hover:opacity-80 transition-opacity">Kari González</a></h2>
         <h1 class="serif text-5xl md:text-8xl font-bold mb-10 leading-tight">El Camino de Regreso <br> <span class="italic font-light">al Origen</span></h1>
@@ -275,21 +263,16 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
     </div>
 </section>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-32 space-y-40">
+    <div class="max-w-4xl mx-auto px-6 py-32 space-y-40">
         
-        <!-- BIENVENIDA E INTRODUCCIÓN COMPLETA -->
         <article class="full-text-content">
             <p class="text-xl leading-relaxed text-slate-300 mb-20 italic border-l-4 border-gold/50 pl-8">
-                Has atendido esa incomodidad suave que te trajo hasta aquí. Al abrir este espacio sagrado, no solo has adquirido un libro; has reclamado un mapa para recuperar las partes de ti que quedaron dispersas en el tiempo. Este es el inicio de tu <strong>Regreso al Origen</strong>.
+                Has atendido esa incomodidad suave que te trajo hasta aquí. Al abrir este espacio sagrado, no solo has adquirido un libro; has reclamado un mapa para recuperar las partes de ti que quedaron dispersas in el tiempo. Este es el inicio de tu <strong>Regreso al Origen</strong>.
             </p>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -309,7 +292,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1la4xm_oOETszZRhX1DHzmsO9ZNQGv34I/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -319,7 +301,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
             </div>
         </div>
     </div>
-</div>
             <h2 class="serif text-4xl md:text-6xl gold-text mb-12 uppercase tracking-widest text-center">INTRODUCCIÓN</h2>
             <h3 class="serif text-2xl md:text-3xl mb-12 italic text-center">El Porqué de este Viaje: Recordar lo que nunca se perdió</h3>
             <div class="space-y-6">
@@ -347,7 +328,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
             </div>
         </article>
 
-        <!-- GUÍA DE NAVEGACIÓN -->
         <section class="portal-card p-10 md:p-20 rounded-[3rem] border border-gold/20">
             <h2 class="serif text-3xl md:text-4xl gold-text mb-8 uppercase tracking-tighter">GUÍA DE NAVEGACIÓN: Tu Experiencia Inmersiva</h2>
             <div class="space-y-10 text-lg text-slate-300">
@@ -371,7 +351,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
             </div>
         </section>
 
-        <!-- PREPARANDO EL TERRENO COMPLETO -->
         <article class="space-y-16 full-text-content">
             <h2 class="serif text-4xl md:text-5xl gold-text text-center uppercase tracking-widest">PREPARANDO EL TERRENO: El Lenguaje del Origen</h2>
             <p class="text-center italic">Antes de comenzar a caminar, es necesario que sintonicemos nuestro lenguaje. Si conceptos como "vibración", "energía" o "consciencia" te resultan nuevos, no te preocupes: son simplemente los nombres que le damos a la naturaleza real de lo que eres.</p>
@@ -384,7 +363,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
                     <p>Este libro no busca enseñarte teorías; funciona como un <strong>ecualizador</strong>. Su propósito es ayudarte a mover el dial de tu sintonía para que dejes de resonar con el conflicto y comiences a sintonizar tu frecuencia original.</p>
                 </div>
 
-                <!-- LA FRASE MANUSCRITA -->
                 <div class="py-16 px-8 border-y border-gold/20 text-center bg-white/5 rounded-2xl">
                     <p class="handwriting text-4xl md:text-6xl leading-tight mb-8">
                         "Existe una verdad urgente que quiero que abraces antes de seguir avanzando: no te mueras con tu música dentro de ti."
@@ -404,19 +382,15 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
                     </ul>
                 </div>
                 <div class="my-8 group">
-    <!-- Contenedor principal con efecto de cristal y oro -->
     <div class="relative p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-950 border border-gold-text/20 transition-all duration-500 hover:border-gold-text/50 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)] overflow-hidden">
         
-        <!-- Elemento decorativo de fondo (Aura sutil) -->
         <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#D4AF37]/5 blur-3xl rounded-full group-hover:bg-[#D4AF37]/10 transition-all duration-700"></div>
 
         <div class="flex flex-col md:flex-row gap-6 items-center md:items-start relative z-10">
-            <!-- Icono destacado -->
             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold-text/10 border border-gold-text/30 flex items-center justify-center shadow-inner">
                 <i data-lucide="file-down" class="gold-text w-6 h-6 animate-pulse"></i>
             </div>
 
-            <!-- Contenido de texto -->
             <div class="flex-grow text-center md:text-left">
                 <h4 class="serif text-lg gold-text italic mb-2 tracking-wide">Recurso Adicional</h4>
                 <p class="text-slate-300 leading-relaxed opacity-90 mb-4">
@@ -428,7 +402,6 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
                     con la explicación de las Ondas cerebrales y tendrás acceso a más de 20 audios con los beneficios en el sistema nervioso y en todo el ser.
                 </p>
                 
-                <!-- Botón de acción minimalista -->
                 <a href="https://drive.google.com/file/d/1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP/view?usp=sharing" 
                    target="_blank"
                    class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold gold-text border-b border-gold-text/40 pb-1 hover:border-gold-text hover:text-white transition-all">
@@ -443,13 +416,12 @@ Bienvenida al centro de mando de tu transformación. Navega por las dimensiones 
                 <div class="bg-indigo-900/10 p-10 rounded-3xl border border-indigo-500/20">
                     <h4 class="serif text-3xl gold-text mb-8 uppercase tracking-widest text-center">3. La Escalera vibracional: ¿Desde dónde vives?</h4>
                     <div class="space-y-8">
-                        <p>Para regresar al Origen, primero debemos reconocer en qué escalón de nuestra evolución
-estamos parados. Existen tres instancias principales en la experiencia humana:</p>
-    <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/prueba-estado-de-consciencia.jpg?v=1776043067')">
+                        <p>Para regresar al Origen, primero debemos reconocer en qué escalón de nuestra evolución estamos parados. Existen tres instancias principales en la experiencia humana:</p>
+    <div class="relative group max-w-2xl w-full cursor-pointer mx-auto" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/prueba-estado-de-consciencia.jpg?v=1776043067')">
         <div class="absolute -inset-1 bg-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
         <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
             <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/prueba-estado-de-consciencia.jpg?v=1776043067" 
-                 alt="Prueba Estado de Consciencia" class="w-full h-auto" />
+                 alt="Prueba Estado de Consciencia" class="w-full h-auto mx-auto" />
             <div class="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-full text-gold opacity-0 group-hover:opacity-100 transition-opacity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
             </div>
@@ -464,7 +436,7 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
         <div class="absolute -inset-1 bg-gold/20 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
         <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden border border-gold/30 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
             <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/mapa-a-traves-de-mi.jpg?v=1776042811" 
-                 alt="Mapa El Camino de Regreso al Origen" class="w-full h-auto" />
+                 alt="Mapa El Camino de Regreso al Origen" class="w-full h-auto mx-auto" />
             <div class="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-full text-gold opacity-0 group-hover:opacity-100 transition-opacity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
             </div>
@@ -473,38 +445,9 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
 
 </section>
 
-<div id="lightbox" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-sm items-center justify-center p-4 md:p-10 transition-all duration-300" onclick="closeLightbox()">
-    <button class="absolute top-6 right-6 text-white/50 hover:text-gold text-4xl transition-colors">&times;</button>
-    <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl border border-white/10 object-contain animate-in zoom-in duration-300" onclick="event.stopPropagation()" />
-</div>
-
-<script>
-    function openLightbox(url) {
-        const lightbox = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        img.src = url;
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-        document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        document.body.style.overflow = 'auto'; // Habilita el scroll
-    }
-
-    // Cerrar con la tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-    });
-</script>
-
                     </div>
                 </div>
 
-                <!-- COMPROMISO -->
                 <div class="p-12 md:p-20 bg-slate-900 rounded-[3rem] border border-gold/30 text-center space-y-8 shadow-2xl">
                     <h4 class="serif text-3xl gold-text uppercase tracking-widest">EL COMPROMISO CON TU EXPERIENCIA</h4>
                     <div class="italic text-slate-200 text-xl leading-relaxed space-y-6">
@@ -516,18 +459,14 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
             </div>
         </article>
 
-        <!-- PORTAL I: LA PRIMERA LLAMA -->
         <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal1">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">01</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal I</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12">La Primera Llama: Escuchando el llamado</h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -547,7 +486,6 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1x-I1_hSdoUs5-lkHBEiiW8iz8NonZ0lZ/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -557,7 +495,6 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
             </div>
         </div>
     </div>
-</div>
             <div class="space-y-8 text-lg text-slate-300 leading-loose">
                 <div class="my-20 flex justify-center px-4">
     <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal1-el-llamado-libro-el-camino-de-regreso-al-origen.jpg?v=1776052631')">
@@ -579,33 +516,6 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
     </div>
 </div>
 
-<div id="lightbox" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-sm items-center justify-center p-4 md:p-10 transition-all duration-300" onclick="closeLightbox()">
-    <button class="absolute top-6 right-6 text-white/50 hover:text-gold text-4xl transition-colors">&times;</button>
-    <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl border border-white/10 object-contain animate-in zoom-in duration-300" onclick="event.stopPropagation()" />
-</div>
-
-<script>
-    function openLightbox(url) {
-        const lightbox = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        img.src = url;
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-        document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        document.body.style.overflow = 'auto'; // Habilita el scroll
-    }
-
-    // Cerrar con la tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-    });
-</script>
                 <p>El despertar no suele comenzar con un gran estallido, sino con una incomodidad suave y persistente. Es esa sensación de que, aunque "todo parece estar bien" afuera, algo adentro ha dejado de encajar. Es el alma susurrando que ya es hora de dejar de sobrevivir para empezar a ser.</p>
                 <p>A veces, el llamado se disfraza de un cansancio que el sueño no logra curar. Te despiertas, cumples con tus tareas, sonríes para el mundo y, sin embargo, al final del día queda un residuo de insatisfacción que no logras explicar. Es la "incomodidad de lo que ya no te queda bien". Como un traje que se volvió pequeño, tu vida actual aprieta, limita tu respiración y restringe tu movimiento. No es que algo esté mal en ti; es que tu ser ha crecido y tu realidad todavía no se ha enterado. Lo que antes te daba seguridad, hoy te resulta estrecho.</p>
                 <p>Esa incomodidad no es otra cosa que una disonancia. Tu frecuencia original está intentando emitir una nota clara, pero se choca con el ruido de las expectativas ajenas, los miedos heredados y el automatismo de la supervivencia. Es como intentar escuchar una melodía sagrada en medio de una multitud gritando. El llamado es el instante en el que decides bajarle el volumen al mundo para volver a sintonizar tu propio pulso primigenio.</p>
@@ -631,18 +541,14 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
             </div>
         </section>
 
-        <!-- PORTAL II: EL TEMPLO INTERIOR -->
         <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal2">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">02</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal II</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 uppercase tracking-wide">El Templo Interior: Habitando y Purificando el Vehículo del Alma</h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -662,7 +568,6 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1xYr4VV61GAJcfH4AkPYSQbIH15jyJJ4l/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -696,7 +601,7 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
                 <p>Si el Portal I fue el despertar de la consciencia, el Portal II es el aterrizaje sagrado en la materia. Soleamos vivir de las cejas hacia arriba, atrapados en un laberinto de pensamientos. Pero para que la luz sea útil, debe ser encarnada. Tu cuerpo no es un envase; es un resonador biológico, el altar donde tu divinidad se hace carne. Sin embargo, para que este resonador emita una nota clara, el instrumento debe estar limpio.</p>
 
                 <h4 class="serif text-2xl gold-text mt-8 uppercase tracking-widest">La Biología como Antena: Limpiando el "Ruido"</h4>
-                <p>Imagina que tu cuerpo es una radio de alta precisión. Si los cables están sulfatados o hay interferencias, no podrás sintonizar la frecuencia del Origen. Hoy en día, nuestra biología está saturada de lo que llamamos "ruido de baja frecuencia". Para habitar el templo, es imperativo revisar qué estamos dejando entrar en él:</p>
+                <p>Imagina que tu cuerpo es una radio de alta precisión. Si los cables están sulfatados o hay interferencias, no podrás sintonizar la frecuencia del Origen. Hoje en día, nuestra biología está saturada de lo que llamamos "ruido de baja frecuencia". Para habitar el templo, es imperativo revisar qué estamos dejando entrar en él:</p>
                 <ul class="space-y-6">
                     <li><strong>La Alquimia de la Alimentación:</strong> El azúcar, las harinas refinadas y el alcohol no son solo alimentos; son información que "anestesia" tu sistema nervioso. Al consumirlos, creas un velo que nubla tu intuición. Quitar estos elementos es quitarle peso a tu alma.</li>
                     <li><strong>Vicios que Silencian:</strong> El cigarrillo y otros escapes químicos son parches para no sentir el vacío del Portal I. Al soltarlos, permites que tu energía vital (Prana) vuelva a fluir sin obstáculos.</li>
@@ -718,10 +623,8 @@ estamos parados. Existen tres instancias principales en la experiencia humana:</
                     <h4 class="serif text-2xl gold-text mb-6 uppercase tracking-widest text-center">Práctica del Portal II: El Rezo de la Materia</h4>
                     <p class="mb-6 italic text-center text-sm">Siente cómo las ondas Theta empiezan a masajear tu cerebro.</p>
                     <ol class="space-y-6">
-                        <li><strong>1. Escaneo de Verdad:</strong> Cierra los ojos y siente cómo la gravedad te sostiene. No intentes "hacer" nada, solo siente el contacto de tus pies con la tierra o de tu cuerpo con la silla. Recorre tu cuerpo. ¿Dónde hay un "vicio" de tensión? ¿Dónde
-hay un nudo que se alimenta de azúcar o de palabras no dichas?</li>
-                        <li><strong>2.El Compromiso Biológico:</strong> Lleva tu atención a los latidos de tu corazón. Es tu música interna, el pulso que te conecta con la Fuente desde antes de nacer. Coloca tus manos sobre tu vientre y susurra: "Cuerpo mío, perdón por haberte ignorado. Gracias por sostenerme incluso cuando yo no estaba presente. Hoy elijo purificar tus canales. Elijo la luz en mi comida, el
-aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo a habitarte."</li>
+                        <li><strong>1. Escaneo de Verdad:</strong> Cierra los ojos y siente cómo la gravedad te sostiene. No intentes "hacer" nada, solo siente el contacto de tus pies con la tierra o de tu cuerpo con la silla. Recorre tu cuerpo. ¿Dónde hay un "vicios" de tensión? ¿Dónde hay un nudo que se alimenta de azúcar o de palabras no dichas?</li>
+                        <li><strong>2. El Compromiso Biológico:</strong> Lleva tu atención a los latidos de tu corazón. Es tu música interna, el pulso que te conecta con la Fuente desde antes de nacer. Coloca tus manos sobre tu vientre y susurra: "Cuerpo mío, perdón por haberte ignorado. Gracias por sostenerme incluso cuando yo no estaba presente. Hoy elijo purificar tus canales. Elijo la luz en mi comida, el aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo a habitarte."</li>
                         <li><strong>3. Habita la zona de tensión:</strong> Si encuentras un punto de dolor o incomodidad, no lo rechaces. Respira dentro de él. Imagina que tu respiración es luz que suaviza esa zona. Pregúntale a esa parte de tu cuerpo: “¿Qué mensaje tienes para mí hoy?”. </li>
                     </ol>
                     <p class="italic mb-8 text-center p-4 bg-indigo-900/30 rounded-xl">"Habito mi cuerpo con amor y respeto. Reconozco que mi carne es sagrada y que mi presencia es el puente entre el cielo y la tierra. Aquí y ahora, elijo estar presente en mi propia vida."</p>
@@ -733,18 +636,14 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
             </div>
         </section>
 
-        <!-- PORTAL III: EL FUEGO DEL LINAJE -->
         <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal3">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">03</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal III</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 uppercase tracking-wide">El Fuego del Linaje: Honrando la historia para liberar el futuro</h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -764,7 +663,6 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1aD35tazB5-dMt_6j_BihBTDKH2vp3BAk/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -774,7 +672,7 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
             </div>
         </div>
     </div>
-</div>
+</section>
             <div class="my-20 flex justify-center px-4">
     <div class="relative group max-w-2xl w-full cursor-pointer" onclick="openLightbox('https://cdn.shopify.com/s/files/1/0790/1606/7302/files/portal3-elfuego-del-linaje-libro-el-camino-de-regreso-al-origen.jpg?v=1776084660')">
         
@@ -814,7 +712,7 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
                     <ul class="space-y-6 mb-8">
                         <li><strong>Visualiza la Espiral:</strong> Cierra los ojos y visualiza tu ADN como una escalera de luz dorada que se extiende hacia el infinito, hacia atrás y hacia adelante.</li>
                         <li><strong>Identifica la Carga:</strong> Siente qué memoria o patrón familiar pesa hoy en tu cuerpo. Ponle un color.</li>
-                        <li><strong>El Decreto de Soberanía:</strong> <span class="italic block mt-2">"Reconozco en mi ADN la memoria de todas mis existencias y la fuerza de todos mis ancestros. Tomo la sabiduría y devuelvo el dolor. Hoy activo mi frecuencia original y elijo caminar en libertad. Soy la memoria universal encarnada en amor."</span></li>
+                        <li><strong>El Decreto de Soberanía:</strong> <span class="italic block mt-2">"Reconozco en mi ADN la memoria de todas mis existencias y la fuerza de todos mis ancestros. Tomo la sabiduría y devuelvo el dolor. Hoy activo mi frecuencia original y elijo caminar in libertad. Soy la memoria universal encarnada en amor."</span></li>
                     </ul>
                     
                     <h4 class="serif text-xl gold-text uppercase text-sm tracking-widest mb-4">Espacio de Integración</h4>
@@ -825,19 +723,14 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
             </div>
         </section>
 
-        <!-- LOS DEMÁS PORTALES (IV AL VII) SE MANTIENEN CON LA ESTRUCTURA FIEL DE CADA UNO -->
-
-<section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal4">
+        <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal4">
     <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">04</div>
     <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal IV</h2>
     <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Abrazo de mi Sombra: <span class="italic font-light block md:inline text-slate-400">Integrando la totalidad para recuperar tu poder</span></h3>
-        <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+        <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -857,7 +750,6 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1FNyS00BUs_QmrTm5aBwgilP5KB7LREpF/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -930,7 +822,7 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
                     <span class="text-2xl gold-text">3</span>
                     <div>
                         <strong class="text-indigo-300 block mb-1 uppercase text-sm tracking-wider">La Visualización del Abrazo:</strong> 
-                        <span>Imagina a una versión de ti más joven, esa que se sintió "mala" o "inadecuada". Ábrele los brazos y dile: "Ahora yo soy lo suficientemente grande para amarte con todo lo que eres. Ya no tienes que esconderte más".</span>
+                        <span>Imagina a una versión de ti más joven, esa que se sintió "mala" o "inadecuada". Ábrele los brazos y dile: "Now yo soy lo suficientemente grande para amarte con todo lo que eres. Ya no tienes que esconderte más".</span>
                     </div>
                 </li>
             </ul>
@@ -955,18 +847,14 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
     </div>
 </section>
 
-        <!-- PORTAL V: el silencio Vivo -->
-         <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal5">
+        <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal5">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">05</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal V</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Silencio Vivo: <span class="italic font-light block md:inline text-slate-400">Donde la mente finalmente se rinde</span></h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -986,7 +874,6 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1WCHeeueOIRgi2Car7E_yUSfDE3lYCPNv/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -1017,7 +904,7 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
     </div>
 </div>
             <div class="space-y-8 text-lg text-slate-300 leading-loose">
-                <p>Has caminado a través de tu biología, tu historia y tus profundidades. Ahora, el camino te invita a algo que a la personalidad le aterra: la quietud absoluta.</p>
+                <p>Han caminado a través de tu biología, tu historia y tus profundidades. Ahora, el camino te invita a algo que a la personalidad le aterra: la quietud absoluta.</p>
                 <p>Solemos creer que el silencio es "vacío", una ausencia de sonido o de información. Pero en el camino de regreso al origen, descubrimos que el silencio no es un vacío, sino una <strong>Plenitud</strong>. Es el espacio sagrado donde la Verdad ya no necesita ser explicada, solo presenciada. Es el lenguaje original de la Fuente.</p>
 
                 <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">La Rendición del Gran Narrador</h4>
@@ -1030,8 +917,7 @@ aire puro en mis pulmones y la tierra bajo mis pies. Eres mi templo y hoy vuelvo
 
                 <div class="bg-indigo-900/20 p-8 md:p-12 rounded-3xl border border-indigo-500/30 my-16 shadow-2xl">
                     <h4 class="serif text-3xl gold-text mb-8 text-center uppercase tracking-widest">Práctica del Portal V: La Inmersión en la Quietud</h4>
-                    <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Este audio contiene espacios de silencio profundo entrelazados con frecuencias
-que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
+                    <p class="text-sm text-center mb-10 opacity-60 uppercase tracking-widest">Este audio contiene espacios de silencio profundo entrelazados con frecuencias que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                     
                     <ul class="space-y-8">
                         <li class="flex gap-4">
@@ -1078,18 +964,14 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
         </section>
 
 
-        <!-- PORTAL VI: el canal de coherencia -->
-<section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal6">
+        <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal6">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">06</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal VI</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">El Canal de Coherencia: <span class="italic font-light block md:inline text-slate-400">Alineando pensamiento, sentimiento y palabra</span></h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -1109,7 +991,6 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1Hg1wEttCcsT2qtJpJIwfAhsdOW7jQ27-/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -1203,18 +1084,14 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
             </div>
         </section>
 
-        <!-- PORTAL VII: la integración -->
-<section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal7">
+        <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal7">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">07</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal VII</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">La Integración: <span class="italic font-light block md:inline text-slate-400">El Regreso al Origen como un ser completo</span></h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -1234,7 +1111,6 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1qrm4S23IumLrw4NuzZvU7hzOR9DCvlIg/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -1270,7 +1146,7 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
 
                 <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">El Estado de Presencia Cristalina</h4>
                 <p>Integrar es unir lo que estaba fragmentado. Es dejar de separar lo humano de lo divino, lo mundano de lo sagrado. En este estado de Presencia Cristalina, ya no hay esfuerzo. No necesitas "hacer" para ser espiritual; tu sola presencia, tu respiración y tu mirada ya están emitiendo la nota de la Fuente.</p>
-                <p>Este es el punto donde la "Nueva Humanidad" se vuelve real. Ser un ser integrado significa que puedes lavar los platos, liderar una empresa o abrazar a un hijo desde el mismo centro de paz que encontraste en el silencio. La verdadera maestría no ocurre en la cima de una montaña, sino en medio del caos del mundo, permaneciendo fiel a tu propia vibración.</p>
+                <p>Este es el punto donde la "Nueva Humanidad" se vuelve real. Ser un ser integrado significa que puedes lavar los platos, liderar una empresa o abrazar a un hijo desde el mismo centro de paz que encontraste in el silencio. La verdadera maestría no ocurre en la cima de una montaña, sino en medio del caos del mundo, permaneciendo fiel a tu propia vibración.</p>
 
                 <h4 class="serif text-3xl gold-text mt-12 mb-6 uppercase tracking-wider">El Puente entre Dimensiones</h4>
                 <p>A partir de ahora, te conviertes en un ancla de luz. Tu cuerpo, ya limpio de parásitos, de ruidos y de lealtades ciegas, funciona como un puente. Recibes las instrucciones de tu Supraconsciencia y las traduces en acciones coherentes en la materia.</p>
@@ -1324,18 +1200,14 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
             </div>
         </section>
 
-        <!-- PORTAL 33: EL UMBRAL DE MAESTRÍA -->
         <section class="portal-card p-10 md:p-20 rounded-[3rem] relative" id="portal33">
             <div class="serif text-8xl absolute -top-10 -left-6 opacity-10 gold-text pointer-events-none">33</div>
             <h2 class="serif text-2xl gold-text mb-2 uppercase tracking-[0.3em]">Portal 33</h2>
             <h3 class="serif text-4xl md:text-6xl mb-12 text-white leading-tight">La Maestría Encarnada: <span class="italic font-light block md:inline text-slate-400">La Muerte Amorosa del Observador y el Código de la Ascensión</span></h3>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
+                <div class="my-10">
         <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
             
             <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
                 <div class="mb-6">
                     <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
                         <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
@@ -1355,7 +1227,6 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                     Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
                 </p>
 
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
                 <a href="https://drive.google.com/file/d/1xjbAosvsS7sB3pCduTwxbpU11xn95XSx/view?usp=drive_link" 
                    target="_blank"
                    class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
@@ -1462,46 +1333,8 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                 </div>
             </div>
         </section>
-        <!-- el cierre -->
-<article class="py-20 border-t border-white/10 space-y-12 full-text-content">
+        <article class="py-20 border-t border-white/10 space-y-12 full-text-content">
             <h2 class="serif text-4xl md:text-6xl gold-text text-center uppercase tracking-widest">EL CIERRE: Tu música, tu mensaje</h2>
-                <!-- RECURSO ACTUALIZADO: Activación de Audio Binaural para Portales -->
-    <div class="my-10">
-        <!-- Contenedor sólido y minimalista -->
-        <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-gold-text/30 shadow-2xl">
-            
-            <div class="relative z-10 flex flex-col items-center text-center">
-                <!-- Imagen de Auriculares personalizada -->
-                <div class="mb-6">
-                    <div class="w-20 h-20 rounded-full bg-slate-950 border border-gold-text/40 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)] overflow-hidden">
-                        <img src="https://cdn.shopify.com/s/files/1/0790/1606/7302/files/headphones-2104207_1280.webp?v=1778508705" 
-                             alt="[Auriculares]" 
-                             class="w-12 h-12 object-contain brightness-125 contrast-110">
-                    </div>
-                </div>
-
-                <h4 class="serif text-2xl gold-text italic mb-3 tracking-widest uppercase">Activación de Frecuencia Binaural</h4>
-                
-                <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-gold-text/10 border border-gold-text/20">
-                    <i data-lucide="info" class="gold-text w-4 h-4"></i>
-                    <span class="text-xs gold-text font-bold tracking-widest uppercase">Importante: Usa auriculares</span>
-                </div>
-
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8 max-w-lg opacity-90">
-                    Para que la tecnología de sonido actúe sobre tu sistema nervioso y facilite la inmersión profunda, es esencial el uso de auriculares.
-                </p>
-
-                <!-- Botón de Reproducción siempre visible con texto en blanco para mejor legibilidad -->
-                <a href="https://drive.google.com/file/d/1QXs-dvLCjj3KQhX75dS01wUfpzODMNz7/view?usp=drive_link" 
-                   target="_blank"
-                   class="inline-flex items-center gap-3 bg-gold-text text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-slate-950 shadow-[0_4px_20px_rgba(212,175,55,0.4)]">
-                    <i data-lucide="play" class="w-5 h-5 fill-current"></i>
-                    Cierre
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
             <div class="space-y-8 text-lg text-slate-300 leading-loose">
                 <p>El viaje no termina aquí; en realidad, tu música apenas comienza a sonar. Has regresado al Origen no para quedarte allí, sino para encarnar ese cielo en la tierra en cada paso que des. Ya no busques las respuestas en estas páginas; búscalas en el latido de tu propio corazón, en el silencio de tus mañanas y en la coherencia de tus actos. Eres la medicina que el mundo estaba esperando.</p>
                 
@@ -1517,201 +1350,230 @@ que ayudan a ralentizar tus ondas cerebrales hacia el estado Delta.</p>
                 </div>
             </div>
         </article>
-
+</div>
     </main>
 
     <footer class="bg-slate-900 py-20 text-center text-slate-600 border-t border-white/5">
         <p>© 2026 El Camino de Regreso al Origen. Kari González.</p>
     </footer>
 </div>
-    <!-- LOGIC & PERSISTENCE (SIN IA) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-  apiKey: "AIzaSyDHqbyVu5GPS2MU-nFXgYqOm_dZcWZR2DQ",
-  authDomain: "regreso-al-origen.firebaseapp.com",
-  projectId: "regreso-al-origen",
-  storageBucket: "regreso-al-origen.firebasestorage.app",
-  messagingSenderId: "222308782579",
-  appId: "1:222308782579:web:3d5f83687b0dcfb1990286",
-  measurementId: "G-66KWMRDR7Y"
-};
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+<div id="lightbox" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-sm items-center justify-center p-4 md:p-10 transition-all duration-300" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/50 hover:text-gold text-4xl transition-colors">&times;</button>
+    <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl border border-white/10 object-contain" onclick="event.stopPropagation()" />
+</div>
 
-        let currentUser = null;
-        let saveTimeouts = {};
+<script>
+    function openLightbox(url) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        if (lightbox && img) {
+            img.src = url;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+    }
 
- // Control de acceso y visualización
-        onAuthStateChanged(auth, (user) => { 
-            if (user) { 
-                currentUser = user; 
-                // Si el usuario está conectado, mostramos el libro y ocultamos el portal de acceso
-                if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.add('hidden');
-                if(document.getElementById('main-content')) document.getElementById('main-content').classList.remove('hidden');
-                syncNotes(); 
-            } else {
-                currentUser = null;
-                // Si no está conectado, mostramos el portal de acceso y ocultamos el libro
-                if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.remove('hidden');
-                if(document.getElementById('main-content')) document.getElementById('main-content').classList.add('hidden');
-            }
-        });
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    }
 
-        // Funciones del Portal (Login / Registro con Clave)
-        window.switchAuthTab = function(tab) {
-            const btnLogin = document.getElementById('tab-login');
-            const btnRegister = document.getElementById('tab-register');
-            const formLogin = document.getElementById('form-login');
-            const formRegister = document.getElementById('form-register');
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
 
-            if (tab === 'login') {
-                btnLogin.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
-                btnRegister.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
-                formLogin.classList.remove('hidden');
-                formRegister.classList.add('hidden');
-            } else {
-                btnLogin.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
-                btnRegister.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
-                formLogin.classList.add('hidden');
-                formRegister.classList.remove('hidden');
-            }
-        };
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        window.handleAuthSubmit = async function(event, type) {
-            event.preventDefault();
-            const loginError = document.getElementById('login-error');
-            const regError = document.getElementById('reg-error');
+    const firebaseConfig = {
+        apiKey: "AIzaSyDHqbyVu5GPS2MU-nFXgYqOm_dZcWZR2DQ",
+        authDomain: "regreso-al-origen.firebaseapp.com",
+        projectId: "regreso-al-origen",
+        storageBucket: "regreso-al-origen.firebasestorage.app",
+        messagingSenderId: "222308782579",
+        appId: "1:222308782579:web:3d5f83687b0dcfb1990286",
+        measurementId: "G-66KWMRDR7Y"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    let currentUser = null;
+    let saveTimeouts = {};
+
+    // Control de acceso y visualización sin bloqueos
+    onAuthStateChanged(auth, (user) => { 
+        if (user) { 
+            currentUser = user; 
+            if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.add('hidden');
+            if(document.getElementById('main-content')) document.getElementById('main-content').classList.remove('hidden');
+            syncNotes(); 
+        } else {
+            currentUser = null;
+            if(document.getElementById('auth-portal')) document.getElementById('auth-portal').classList.remove('hidden');
+            if(document.getElementById('main-content')) document.getElementById('main-content').classList.add('hidden');
+        }
+    });
+
+    // Funciones del Portal (Login / Registro con Clave)
+    window.switchAuthTab = function(tab) {
+        const btnLogin = document.getElementById('tab-login');
+        const btnRegister = document.getElementById('tab-register');
+        const formLogin = document.getElementById('form-login');
+        const formRegister = document.getElementById('form-register');
+
+        if (tab === 'login') {
+            btnLogin.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
+            btnRegister.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
+            formLogin.classList.remove('hidden');
+            formRegister.classList.add('hidden');
+        } else {
+            btnLogin.className = "flex-1 pb-3 text-slate-500 border-b-2 border-transparent hover:text-slate-300 transition-all font-semibold text-[11px] uppercase tracking-widest";
+            btnRegister.className = "flex-1 pb-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold transition-all text-[11px] uppercase tracking-widest";
+            formLogin.classList.add('hidden');
+            formRegister.classList.remove('hidden');
+        }
+    };
+
+    window.handleAuthSubmit = async function(event, type) {
+        event.preventDefault();
+        const loginError = document.getElementById('login-error');
+        const regError = document.getElementById('reg-error');
+        
+        if (loginError) loginError.classList.add('hidden');
+        if (regError) regError.classList.add('hidden');
+
+        if (type === 'login') {
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
             
-            if (loginError) loginError.classList.add('hidden');
-            if (regError) regError.classList.add('hidden');
-
-            if (type === 'login') {
-                const email = document.getElementById('login-email').value.trim();
-                const password = document.getElementById('login-password').value;
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-                
-                try {
-                    submitBtn.innerText = "Ingresando...";
-                    submitBtn.disabled = true;
-                    await signInWithEmailAndPassword(auth, email, password);
-                } catch (error) {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    if (loginError) {
-                        loginError.innerText = "Credenciales incorrectas o usuario no registrado.";
-                        loginError.classList.remove('hidden');
-                    }
-                }
-            } else if (type === 'register') {
-                const email = document.getElementById('reg-email').value.trim();
-                const password = document.getElementById('reg-password').value;
-                const key = document.getElementById('reg-key').value.trim();
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-
-                // Validación estricta de la clave secreta
-                if (key !== "ORIGEN2026") {
-                    if (regError) {
-                        regError.innerText = "La Clave de Activación es incorrecta. Revisa tu email de compra.";
-                        regError.classList.remove('hidden');
-                    }
-                    return;
-                }
-
-                if (password.length < 6) {
-                    if (regError) {
-                        regError.innerText = "La contraseña debe tener al menos 6 caracteres.";
-                        regError.classList.remove('hidden');
-                    }
-                    return;
-                }
-
-                try {
-                    submitBtn.innerText = "Activando Acceso...";
-                    submitBtn.disabled = true;
-                    await createUserWithEmailAndPassword(auth, email, password);
-                } catch (error) {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    if (regError) {
-                        let msg = "Error al crear la cuenta. Intente con otro correo.";
-                        if (error.code === 'auth/email-already-in-use') {
-                            msg = "Este correo electrónico ya está registrado. Inicie sesión.";
-                        } else if (error.code === 'auth/invalid-email') {
-                            msg = "Formato de correo inválido.";
-                        }
-                        regError.innerText = msg;
-                        regError.classList.remove('hidden');
-                    }
+            try {
+                submitBtn.innerText = "Ingresando...";
+                submitBtn.disabled = true;
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                if (loginError) {
+                    loginError.innerText = "Credenciales incorrectas o usuario no registrado.";
+                    loginError.classList.remove('hidden');
                 }
             }
-        };
+        } else if (type === 'register') {
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const key = document.getElementById('reg-key').value.trim();
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
 
-        // Sincronización de Notas (Persistencia)
-        function syncNotes() {
-            if (!currentUser) return;
-            document.querySelectorAll('.note-input').forEach(textarea => {
-                const noteId = textarea.getAttribute('data-note-id');
-                const ref = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'notes', noteId);
-                
-                onSnapshot(ref, (snap) => {
-                    if (snap.exists() && document.activeElement !== textarea) {
-                        textarea.value = snap.data().content || '';
+            if (key !== "ORIGEN2026") {
+                if (regError) {
+                    regError.innerText = "La Clave de Activación es incorrecta. Revisa tu email de compra.";
+                    regError.classList.remove('hidden');
+                }
+                return;
+            }
+
+            if (password.length < 6) {
+                if (regError) {
+                    regError.innerText = "La contraseña debe tener al menos 6 caracteres.";
+                    regError.classList.remove('hidden');
+                }
+                return;
+            }
+
+            try {
+                submitBtn.innerText = "Activando Acceso...";
+                submitBtn.disabled = true;
+                await createUserWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                if (regError) {
+                    let msg = "Error al crear la cuenta. Intente con otro correo.";
+                    if (error.code === 'auth/email-already-in-use') {
+                        msg = "Este correo electrónico ya está registrado. Inicie sesión.";
+                    } else if (error.code === 'auth/invalid-email') {
+                        msg = "Formato de correo inválido.";
                     }
-                });
+                    regError.innerText = msg;
+                    regError.classList.remove('hidden');
+                }
+            }
+        }
+    };
 
-                textarea.addEventListener('input', (e) => {
-                    const status = document.querySelector(`[data-status-id="${noteId}"]`);
-                    if (status) status.innerText = "Guardando...";
-
-                    clearTimeout(saveTimeouts[noteId]);
-                    saveTimeouts[noteId] = setTimeout(async () => {
-                        try {
-                            await setDoc(ref, { content: e.target.value, updated: new Date() }, { merge: true });
-                            if (status) status.innerText = "✓ Sincronizado";
-                        } catch (err) {
-                            if (status) status.innerText = "⚠ Error";
-                        }
-                    }, 1200);
-                });
+    // Sincronización de Notas (Persistencia)
+    function syncNotes() {
+        if (!currentUser) return;
+        document.querySelectorAll('.note-input').forEach(textarea => {
+            const noteId = textarea.getAttribute('data-note-id');
+            const ref = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'notes', noteId);
+            
+            onSnapshot(ref, (snap) => {
+                if (snap.exists() && document.activeElement !== textarea) {
+                    textarea.value = snap.data().content || '';
+                }
             });
-        }
-    </script>
-    <script>
-function descargarDesdeDrive(tipo) {
-            // Todos los archivos se abrirán en una pestaña hermosa de vista previa en Drive
-            let urlBase = "https://drive.google.com/file/d/";
-            let urlFin = "/view?usp=sharing";
-            let idArchivo = "";
 
-            switch(tipo) {
-                case 'ebook_impresion':
-                    idArchivo = "1r1rBzJN8vm3TbOipu04hTZny70wsA48c"; 
-                    break;
-                case 'audio': 
-                    idArchivo = "1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM"; 
-                    break;
-                case 'guia': 
-                    idArchivo = "1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP"; 
-                    break;
-                default:
-                    console.error("Tipo de archivo no reconocido");
-                    return;
-            }
+            textarea.addEventListener('input', (e) => {
+                const status = document.querySelector(`[data-status-id="${noteId}"]`);
+                if (status) status.innerText = "Guardando...";
 
-            if (idArchivo !== "" && idArchivo !== "TU_ID_DE_DRIVE_DEL_PDF_IMPRESION") {
-                window.open(urlBase + idArchivo + urlFin, '_blank', 'noopener,noreferrer');
-            } else {
-                alert("El archivo se está preparando o requiere configuración de ID en el código.");
-            }
+                clearTimeout(saveTimeouts[noteId]);
+                saveTimeouts[noteId] = setTimeout(async () => {
+                    try {
+                        await setDoc(ref, { content: e.target.value, updated: new Date() }, { merge: true });
+                        if (status) status.innerText = "✓ Sincronizado";
+                    } catch (err) {
+                        if (status) status.innerText = "⚠ Error";
+                    }
+                }, 1200);
+            });
+        });
+    }
+</script>
+
+<script>
+    function descargarDesdeDrive(tipo) {
+        let urlBase = "https://drive.google.com/file/d/";
+        let urlFin = "/view?usp=sharing";
+        let idArchivo = "";
+
+        switch(tipo) {
+            case 'ebook_impresion':
+                idArchivo = "1r1rBzJN8vm3TbOipu04hTZny70wsA48c"; 
+                break;
+            case 'audio': 
+                idArchivo = "1XRmixTytQl8gGxBjmGMhJLOLm_0kCEkM"; 
+                break;
+            case 'guia': 
+                idArchivo = "1i8P1AGW3--nHX_YGdGVa2qpwdG_HzZBP"; 
+                break;
+            default:
+                console.error("Tipo de archivo no reconocido");
+                return;
         }
-    </script>
+
+        if (idArchivo !== "" && idArchivo !== "TU_ID_DE_DRIVE_DEL_PDF_IMPRESION") {
+            window.open(urlBase + idArchivo + urlFin, '_blank', 'noopener,noreferrer');
+        } else {
+            alert("El archivo se está preparando o requiere configuración de ID en el código.");
+        }
+    }
+</script>
 </body>
 </html>
